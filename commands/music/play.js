@@ -1,8 +1,9 @@
 const commando = require('discord.js-commando');
 
-var LOADDIR = "C:/Users/BoedJ/Music/cap.mp3";
+var LOADDIR = "C:/Users/BoedJ/Music/porzgoret.mp3";
 
-var request = require("superagent");
+const ytdl = require("ytdl-core");
+const request = require("request");
 
 class PlayCommand extends commando.Command {
   constructor(client) {
@@ -20,18 +21,28 @@ class PlayCommand extends commando.Command {
       var link = message.content.split(" ");
 		  link.splice(0, 1);
 		  link = link.join(" ");
-      message.channel.sendMessage("Now playing: " + link);
+      message.channel.sendMessage("Now playing: " + "<" + link + ">");
 
       var voiceChannel = message.member.voiceChannel;
-      voiceChannel.join()
+      /*voiceChannel.join()
         .then(connection => {
-          //var request = require("request");
+          var request = require("request");
       		var stream = request(link);
-      		const dispatcher = connection.playStream(stream);
+      		//const dispatcher =
+          connection.playStream(stream);
           //const dispatcher = connection.playFile(LOADDIR);
         })
-          .catch(console.error());
-  		message.channel.sendMessage("Joining this party!");
+          .catch(console.error());*/
+
+      voiceChannel.join()
+      .then(connection => {
+        var stream = ytdl(link);
+        const dispatcher = connection.playStream(stream);
+      })
+      .catch(console.error);
+
+  		message.channel.sendMessage("Joining the voice party!");
+      message.channel.sendMessage("_Being a little twat_");
 
 
       var connection = message.member.voiceConnection;
