@@ -5,14 +5,15 @@ class WarnCommand extends commando.Command {
     super(client, {
       name: 'warn',
       group: 'mod',
-      memberName: 'mod',
+      memberName: 'warn',
       description: 'Warns a user.'
     });
   }
 
   async run(message, args) {
+    var messageAuthor = message.author
     //check if author of command message has correct permissions
-    if (!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) {
+    if (!message.guild.member(messageAuthor).hasPermission("MANAGE_MESSAGES")) {
       message.reply('you do not have this permission.');
       message.delete();
     }

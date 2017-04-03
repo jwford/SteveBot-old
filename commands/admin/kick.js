@@ -12,14 +12,20 @@ class KickCommand extends commando.Command {
   }
 
   async run(message, args) {
-    if (!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) {
+    var messageAuthor = message.author;
+    var kickedUser = message.mentions.users.first();
+    if (!message.guild.member(messageAuthor).hasPermission("KICK_MEMBERS")) {
       message.reply('you do not have this permission.');
       message.delete();
+    } else if (!kickedUser.kickable()) {
+      message.reply('I cannot kick this user.');
     }
-    if (message.mentions.users.size < 1) return message.reply('You must mention a user to kick them.');
-    if (message.mentions.users.size > 1) return message.reply('You can only kick one user at a time.');
-    message.guild.member(message.mentions.users.first()).kick();
-    message.delete();
+    else {
+      if (message.mentions.users.size < 1) return message.reply('You must mention a user to kick them.');
+      if (message.mentions.users.size > 1) return message.reply('You can only kick one user at a time.');
+      message.guild.member(kickedUser).kick();
+      message.delete();
+    }
   }
 }
 
