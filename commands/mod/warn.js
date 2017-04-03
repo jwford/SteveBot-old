@@ -11,6 +11,7 @@ class WarnCommand extends commando.Command {
   }
 
   async run(message, args) {
+    //check if author of command message has correct permissions
     if (!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) {
       message.reply('you do not have this permission.');
       message.delete();
