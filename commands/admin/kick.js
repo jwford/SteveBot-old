@@ -19,6 +19,7 @@ class KickCommand extends commando.Command {
     if (message.mentions.users.size < 1) return message.reply('You must mention a user to kick them.');
     if (message.mentions.users.size > 1) return message.reply('You can only kick one user at a time.');
     message.guild.member(message.mentions.users.first()).kick();
+    message.delete();
   }
 }
 
