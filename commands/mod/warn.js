@@ -17,6 +17,7 @@ module.exports = class WarnCommand extends commando.Command {
     var numOfMentions = message.mentions.users.size;
     var reason = message.content.split('\"');
     var modlog = message.guild.channels.find('name', 'modlog');
+
     if (!messageAuthor.hasPermission("MANAGE_MESSAGES")) { //check if author of command message is mod or admin
       message.delete();
       return message.reply('you do not have this permission.');
@@ -30,17 +31,22 @@ module.exports = class WarnCommand extends commando.Command {
       message.delete();
       return message.reply('please only use one set of quotes for the reason.');
     }
+
+      //actually do the goddamn thing
       reason = reason[1];
       message.channel.sendMessage(warnedUser + ', please turn the bus around. ' + reason + ' :bus:');
       message.delete();
-      //modlog
+
+      //put it in the modlog
       const embed = new Discord.RichEmbed()
+      .setTitle('Member Warned')
       .setColor(0x00AE86)
       .setTimestamp()
-      .addField('Action:', 'Warning')
-      .addField('User:', `${warnedUser.username}#${warnedUser.discriminator}`)
+      .setThumbnail(warnedUser.avatarURL)
+      .addField('Member:', `${warnedUser.username}#${warnedUser.discriminator}`)
       .addField('Modmin:', `${message.author.username}#${message.author.discriminator}`)
       .addField('Reason:', reason);
+
       modlog.sendEmbed(embed);
   }
 }
