@@ -7,7 +7,6 @@ stevebot.on('ready', () => {
 });
 
 stevebot.registry.registerGroup('random', 'Random');
-stevebot.registry.registerGroup('admin', 'Admin');
 stevebot.registry.registerGroup('mod', 'Mod');
 stevebot.registry.registerDefaults();
 stevebot.registry.registerCommandsIn(__dirname + "/commands");
