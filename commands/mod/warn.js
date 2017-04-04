@@ -11,17 +11,23 @@ class WarnCommand extends commando.Command {
   }
 
   async run(message, args) {
-    var messageAuthor = message.author
-    //check if author of command message has correct permissions
-    if (!message.guild.member(messageAuthor).hasPermission("MANAGE_MESSAGES")) {
+    var messageAuthor = message.guild.member(message.author);
+    var warnedUser = message.mentions.users.first();
+    var numOfMentions = message.mentions.users.size;
+    var reason = message.content.split('\"');
+    if (!messageAuthor.hasPermission("MANAGE_MESSAGES")) { //check if author of command message is mod or admin
       message.reply('you do not have this permission.');
       message.delete();
+    } else if (numOfMentions > 1 || numOfMentions < 1) { //check that one user has been tagged
+      message.delete();
+      return message.reply('you must tag one user at a time to warn them.');
+    } else if (reason.length < 2) {
+      message.delete();
+      return message.reply('You must supply a reason for the warning.');
     }
-    if (message.mentions.users.size < 1) return message.reply('you must mention a user to warn them.');
-    if (message.mentions.users.size > 1) return message.reply('you can only warn one user at a time.');
-    var warnedUser = message.mentions.users.first();
-    message.channel.sendMessage(warnedUser + ", please turn the bus around. ");
-    message.delete();
+      reason = reason[1];
+      message.channel.sendMessage(warnedUser + ', please turn the bus around. ' + reason + ' :bus:');
+      message.delete();
   }
 }
 
