@@ -30,6 +30,9 @@ module.exports = class WarnCommand extends commando.Command {
     } else if (reason.length > 2 && reason[2].length > 1) { //check that only one set of quotes was used
       message.delete();
       return message.reply('please only use one set of quotes for the reason.');
+    } else if (!modlog) {
+      message.delete();
+      return message.reply('I need a modlog channel to post in.');
     }
 
       //actually do the goddamn thing
