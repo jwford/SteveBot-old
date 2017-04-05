@@ -1,15 +1,21 @@
-const Discord = require('discord.js');
 const commando = require('discord.js-commando');
-const stevebot = new commando.Client();
+const path = require('path');
+const stevebot = new commando.Client({
+  owner: '273707798670344192',
+  commandPrefix: '!'
+});
 
 stevebot.on('ready', () => {
   console.log('SteveBot is ready!');
 });
 
-stevebot.registry.registerGroup('random', 'Random');
-stevebot.registry.registerGroup('admin', 'Admin');
-//stevebot.registry.registerGroup('mod', 'Mod');
-stevebot.registry.registerDefaults();
-stevebot.registry.registerCommandsIn(__dirname + "/commands");
+stevebot.registry
+    .registerGroups([
+        ['mod', 'Moderator Commands'],
+        ['random', 'Rolling dice and such'],
+        ['music', 'Play songs']
+    ])
+    .registerDefaults()
+    .registerCommandsIn(path.join(__dirname, 'commands'));
 
 stevebot.login('Mjk3ODkwNzQyNzcxMjUzMjU4.C8HX5Q.L0hwHVfPxYsHrGKPgVVrug7Iu58');
