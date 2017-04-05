@@ -2,7 +2,7 @@ const commando = require('discord.js-commando');
 const path = require('path');
 const stevebot = new commando.Client({
   owner: '273707798670344192',
-  commandPrefix: '&'
+  commandPrefix: '!'
 });
 
 stevebot.on('ready', () => {
