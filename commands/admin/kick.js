@@ -15,7 +15,13 @@ module.exports = class MuteCommand extends commando.Command {
     var kickedUser = message.mentions.users.first();
     var admin = message.author;
     var reason = message.content.split('\"');
+    var numOfMentions = message.mentions.users.size;
     var modlog = message.guild.channels.find('name', 'modlog');
+
+    if (numOfMentions < 1 || numOfMentions > 1) {
+      message.delete();
+      message.reply('you must mention one user to kick them.');
+    }
 
     if (!message.guild.member(admin).hasPermission('KICK_MEMBERS')) {
       message.delete();
