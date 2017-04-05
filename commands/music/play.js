@@ -1,9 +1,13 @@
 const commando = require('discord.js-commando');
 
-var LOADDIR = "C:/Users/BoedJ/Music/porzgoret.mp3";
+//var LOADDIR = "C:/Users/BoedJ/Music/porzgoret.mp3";
 
-const ytdl = require("ytdl-core");
+const ytdl = require("youtube-dl");
 const request = require("request");
+
+var dispatcher = null;
+
+//var priorityqueue = require('./PriorityQueue');
 
 class PlayCommand extends commando.Command {
   constructor(client) {
@@ -13,61 +17,61 @@ class PlayCommand extends commando.Command {
       memberName: 'play',
       description: 'Plays a song.'
     });
-  }
 
-  async run(message, args) {
-      //message.channel.sendMessage("Heard ya!");
-
-      var link = message.content.split(" ");
-		  link.splice(0, 1);
-		  link = link.join(" ");
-      message.channel.sendMessage("Now playing: " + "<" + link + ">");
+    function playSong(message, link) {
 
       var voiceChannel = message.member.voiceChannel;
-      /*voiceChannel.join()
-        .then(connection => {
-          var request = require("request");
-      		var stream = request(link);
-      		//const dispatcher =
-          connection.playStream(stream);
-          //const dispatcher = connection.playFile(LOADDIR);
-        })
-          .catch(console.error());*/
 
       voiceChannel.join()
       .then(connection => {
         var stream = ytdl(link);
-        const dispatcher = connection.playStream(stream);
+        dispatcher = connection.playStream(stream);
       })
       .catch(console.error);
 
-  		message.channel.sendMessage("Joining the voice party!");
-      message.channel.sendMessage("_Being a little twat_");
+      message.channel.sendMessage("Now playing: " + "<" + link + ">");
 
+      message.channel.sendMessage("Joining the voice party!");
+      message.channel.sendMessage("_Being a lil shitbag_");
 
-      var connection = message.member.voiceConnection;
+    }
 
-      //var filePath = LOADDIR;// + link;
-			//connection.playFile(filePath);
-
-    //var request = require("request");
-		//var stream = request(link);
-		//connection.playStream(stream);
-
-      /*message.channel.sendMessage("Trying to play... " + message.toString());
-
-      var link = message.content.split(" ");
-      link.splice(0,1);
-      console.print(link);
-      var connection = client.internal.voiceConnection;
-      var request = require("request");
-      var stream = request(link);
-
-      connection.playRawStream(stream);*/
   }
+
+
+
+  async run(message, args) {
+
+      if (args == "stop") {
+        dispatcher.end();
+      } else {
+        var link = message.content.split(" ");
+        link.splice(0, 1);
+  		  link = link.join(" ");
+
+        if (link.charAt(0) == '<') {
+          link = link.substr(1).slice(0, -1);
+        }
+
+        //playSong(message, link);
+
+        message.channel.sendMessage("Now playing: " + "<" + link + ">");
+
+        var voiceChannel = message.member.voiceChannel;
+
+        voiceChannel.join()
+        .then(connection => {
+          var stream = ytdl(link);
+          dispatcher = connection.playStream(stream);
+        })
+        .catch(console.error);
+
+        message.channel.sendMessage("Joining the voice party!");
+        message.channel.sendMessage("_Being a lil shitbag_");
+
+      }
+  }
+
 }
 
 module.exports = PlayCommand;
-
-
-//NO IDEA WHAT I'M DOING HERE, JUST PLAYING AROUND
