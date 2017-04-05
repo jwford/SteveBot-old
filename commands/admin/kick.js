@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 
-module.exports = class MuteCommand extends commando.Command {
+module.exports = class KickCommand extends commando.Command {
   constructor(stevebot) {
     super(stevebot, {
       name: 'kick',
