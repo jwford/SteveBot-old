@@ -37,7 +37,7 @@ module.exports = class WarnCommand extends commando.Command {
 
       //actually do the goddamn thing
       reason = reason[1];
-      message.channel.sendMessage(warnedUser + ', please turn the bus around. ' + reason + ' :bus:');
+      warnedUser.sendMessage(warnedUser + ', please turn the bus around. ' + reason + ' :bus:');
       message.delete();
 
       //put it in the modlog
