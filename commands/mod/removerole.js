@@ -1,13 +1,13 @@
 const commando = require('discord.js-commando');
 const Discord = require('discord.js');
 
-module.exports = class AddRoleCommand extends commando.Command {
+module.exports = class RemoveCommand extends commando.Command {
   constructor(stevebot) {
     super(stevebot, {
-      name: 'addrole',
+      name: 'removerole',
       group: 'mod',
-      memberName: 'addrole',
-      description: 'Adds a role to a user.'
+      memberName: 'removerole',
+      description: 'Remove a role from a user.'
     });
   }
 
@@ -20,13 +20,13 @@ module.exports = class AddRoleCommand extends commando.Command {
 
     if (!message.guild.member(modmin).hasPermission("MANAGE_ROLES_OR_PERMISSIONS")) {
       message.delete();
-      return message.reply('You do not have the permissions to give a role to a user.');
+      return message.channel.sendMessage('You do not have the permissions to give a remove a role from a user.');
     } else if (numOfMentions > 1 || numOfMentions < 1) {
       message.delete();
-      return message.reply('You must provide 1 user to add a role to.');
+      return message.reply('You must provide 1 user to remove a role from.');
     } else if (role.length < 2) {
       message.delete();
-      return message.reply('You must provide a roll to add to the user.');
+      return message.reply('You must provide a roll to remove from the user.');
     } else if (!modlog) {
       message.delete();
       return message.reply('I cannot find a modlog channel.');
@@ -34,15 +34,16 @@ module.exports = class AddRoleCommand extends commando.Command {
 
     role = role[1];
     role = message.guild.roles.find('name', role);
-    if (message.guild.member(user).roles.has(role.id)) {
+
+    if (!message.guild.member(user).roles.has(role.id)) {
       message.delete();
-      return message.reply('This user already has that role.');
+      return message.reply('This user does not have that role.');
     } else {
       message.delete();
-      message.guild.member(user).addRole(role);
+      message.guild.member(user).removeRole(role);
 
       const embed = new Discord.RichEmbed()
-      .setTitle('Member Given a Role')
+      .setTitle('Role taken from member')
       .setColor(0x00AE86)
       .setTimestamp()
       .setThumbnail(user.avatarURL)
