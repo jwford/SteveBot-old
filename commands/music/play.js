@@ -20,7 +20,7 @@ class PlayCommand extends commando.Command {
 
     function playSong(message, link) {
 
-      var voiceChannel = message.member.voiceChannel;
+      var voiceChannel = message.guild.channels.find('name', '🐨 voice_1');
 
       voiceChannel.join()
       .then(connection => {
@@ -57,7 +57,7 @@ class PlayCommand extends commando.Command {
 
         message.channel.sendMessage("Now playing: " + "<" + link + ">");
 
-        var voiceChannel = message.member.voiceChannel;
+        var voiceChannel = message.guild.channels.find('name', '🐨 voice_1');
 
         voiceChannel.join()
         .then(connection => {
