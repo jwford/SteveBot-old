@@ -35,18 +35,17 @@ module.exports = class WarnCommand extends commando.Command {
       return message.reply('I need a modlog channel to post in.');
     }
 
-      actually do the goddamn thing
+      //actually do the goddamn thing
       reason = reason[1];
       warnedUser.sendMessage(warnedUser + ', please turn the bus around. ' + reason + ' :bus:');
       message.delete();
 
       //put it in the modlog
       const embed = new Discord.RichEmbed()
-      .setTitle('Member Warned')
+      .setTitle(`${warnedUser.username}#${warnedUser.discriminator} Warned`)
       .setColor(0x00AE86)
       .setTimestamp()
       .setThumbnail(warnedUser.avatarURL)
-      .addField('Member:', `${warnedUser.username}#${warnedUser.discriminator}`)
       .addField('Modmin:', `${message.author.username}#${message.author.discriminator}`)
       .addField('Reason:', reason);
 
