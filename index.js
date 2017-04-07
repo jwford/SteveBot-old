@@ -12,7 +12,6 @@ stevebot.on('ready', () => {
 stevebot.registry
     .registerGroups([
         ['mod', 'Moderator Commands'],
-        ['admin', 'Administrator Commands'],
         ['random', 'Rolling dice and such'],
         ['music', 'Play songs']
     ])
@@ -20,3 +19,7 @@ stevebot.registry
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 stevebot.login('Mjk3ODkwNzQyNzcxMjUzMjU4.C8HX5Q.L0hwHVfPxYsHrGKPgVVrug7Iu58');
+
+process.on("unhandledRejection", err => {
+  console.error("Uncaught Promise Error: \n" + err.stack);
+});

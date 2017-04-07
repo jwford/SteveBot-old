@@ -1,5 +1,5 @@
-const commando = require('discord.js-commando');
-const Discord = require('discord.js');
+const commando = require ('discord.js-commando');
+const discord = require('discord.js');
 
 module.exports = class WarnCommand extends commando.Command {
   constructor(stevebot) {
@@ -7,48 +7,49 @@ module.exports = class WarnCommand extends commando.Command {
       name: 'warn',
       group: 'mod',
       memberName: 'warn',
-      description: 'Warns a user.'
+      description: 'Warns a user',
+      format: '[user] [reason]',
+      args: [
+        {
+          key: 'user',
+          label: 'user',
+          prompt: 'Enter a user to warn them.',
+          type: 'user'
+        },
+        {
+          key: 'reason',
+          label: 'reason',
+          prompt: 'Enter a reason for warning the user.',
+          type: 'string'
+        }
+      ]
     });
   }
 
-  async run(message, stevebot, args) {
-    var messageAuthor = message.guild.member(message.author);
-    var warnedUser = message.mentions.users.first();
-    var numOfMentions = message.mentions.users.size;
-    var reason = message.content.split('\"');
-    var modlog = message.guild.channels.find('name', 'modlog');
-
-    if (!messageAuthor.hasPermission("MANAGE_MESSAGES")) { //check if author of command message is mod or admin
-      message.delete();
-      return message.reply('you do not have this permission.');
-    } else if (numOfMentions > 1 || numOfMentions < 1) { //check that one user has been tagged
-      message.delete();
-      return message.reply('you must tag one user at a time to warn them.');
-    } else if (reason.length < 2) { //check that a reason has been given
-      message.delete();
-      return message.reply('you must supply a reason for the warning.');
-    } else if (reason.length > 2 && reason[2].length > 1) { //check that only one set of quotes was used
-      message.delete();
-      return message.reply('please only use one set of quotes for the reason.');
-    } else if (!modlog) {
-      message.delete();
-      return message.reply('I need a modlog channel to post in.');
+    hasPermission(msg) {
+      return msg.member.hasPermission('MANAGE_MESSAGES');
     }
 
-      //actually do the goddamn thing
-      reason = reason[1];
-      warnedUser.sendMessage(warnedUser + ', please turn the bus around. ' + reason + ' :bus:');
-      message.delete();
+    async run(msg, args) {
+      var user = args.user;
+      var modmin = msg.author;
+      var reason = args.reason;
+      var modlog = msg.guild.channels.find('name', 'modlog');
 
-      //put it in the modlog
-      const embed = new Discord.RichEmbed()
-      .setTitle(`${warnedUser.username}#${warnedUser.discriminator} Warned`)
-      .setColor(0x00AE86)
-      .setTimestamp()
-      .setThumbnail(warnedUser.avatarURL)
-      .addField('Modmin:', `${message.author.username}#${message.author.discriminator}`)
-      .addField('Reason:', reason);
+      if (user.id == this.client.user.id) return modmin.sendMessage('Using this command on me will break me. What did I ever do to you, anyway?');
+      if (user.id == modmin.id) return modmin.sendMessage('Why would you want to mute yourself?');
 
-      modlog.sendEmbed(embed);
-  }
+      user.sendMessage(user + ' please turn the bus around in ' + msg.channel + '. ' + reason + ' :bus:');
+
+       if(!modlog) return modmin.sendMessage('I cannot find a modlog channel.');
+       const embed = new discord.RichEmbed()
+       .setTitle('Member Given a Warning')
+       .setAuthor(`${modmin.username}#${modmin.discriminator}`)
+       .setThumbnail(user.avatarURL)
+       .setColor(0x000000)
+       .setTimestamp()
+       .addField('User:', `${user.username}#${user.discriminator}`)
+       .addField('Reason:', reason);
+       modlog.sendEmbed(embed);
+    }
 }
