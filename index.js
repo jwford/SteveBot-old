@@ -12,7 +12,7 @@ stevebot.on('ready', () => {
 stevebot.registry
     .registerGroups([
         ['mod', 'Moderator Commands'],
-        ['random', 'Rolling dice and such'],
+        ['random', 'Commands for everyone'],
         ['music', 'Play songs']
     ])
     .registerDefaults()
