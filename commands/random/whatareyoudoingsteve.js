@@ -30,7 +30,8 @@ module.exports = class WhatAreYouDoingCommand extends commando.Command {
       ':boom: :boom: :boom: :boom: :boom:',
       'FOR THE FORSEEABLE FUTURE',
       'http://koalastothemax.com',
-      'I AM NOT THROWIN\' AWAY MY SHOT'
+      'I AM NOT THROWIN\' AWAY MY SHOT',
+      'Hanging out with RoDad!'
     ];
     var random = Math.floor(Math.random() * answers.length);
     msg.channel.sendMessage(answers[random]);
