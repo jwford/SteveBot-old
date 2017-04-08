@@ -1,4 +1,5 @@
 const commando = require('discord.js-commando');
+const discord = require('discord.js');
 const path = require('path');
 const stevebot = new commando.Client({
   owner: '273707798670344192',
@@ -7,6 +8,15 @@ const stevebot = new commando.Client({
 
 stevebot.on('ready', () => {
   console.log('SteveBot is ready!');
+});
+
+//events
+stevebot.on('message', msg => {
+  var numMentions = msg.mentions.users.size;
+  if (numMentions >= 10) {
+    msg.delete();
+    return msg.reply('Can you stop spamming mentions so I can go back to my eucalyptus?');
+  }
 });
 
 stevebot.registry
