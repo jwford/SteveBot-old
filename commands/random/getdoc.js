@@ -59,6 +59,8 @@ module.exports = class GetDocCommand extends commando.Command {
     doc = doc.toLowerCase();
     doc = docs.get(doc);
 
+    if(!doc) return msg.channel.sendMessage('Either I can\'t retrieve that doc (blame Enchilada or BoedJ), or it doesn\'t exist (blame yourself).');
+
     msg.channel.sendMessage('<' + doc + '>');
   }
 }
