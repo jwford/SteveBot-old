@@ -54,6 +54,7 @@ module.exports = class GetDocCommand extends commando.Command {
     docs.set('admin meeting notes', 'https://goo.gl/vruk6x');
     docs.set('ceremonial titles', 'https://goo.gl/0GlosQ');
     docs.set('tuatara? tuatara', 'https://goo.gl/S0bSgi');
+    docs.set('birthday form', 'https://goo.gl/0ZXIIn');
 
     var doc = args.doc;
     doc = doc.toLowerCase();
