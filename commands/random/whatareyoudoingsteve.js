@@ -31,7 +31,20 @@ module.exports = class WhatAreYouDoingCommand extends commando.Command {
       'FOR THE FORSEEABLE FUTURE',
       'http://koalastothemax.com',
       'I AM NOT THROWIN\' AWAY MY SHOT',
-      'Hanging out with RoDad!'
+      'Hanging out with RoDad!',
+      'Did you know that the odds of me appearing on http://koalastothemax.com are completely random?',
+      'Just looking under park benches in Amsterdam!',
+      'Observing puppy-sized elephants in the wild.',
+      'Writing some Koana Lisa fanfic!',
+      'Trying to explain pregaroo. It\'s not working out well...',
+      '<http://tuataria.com>',
+      'http://tuataria.com/shirt',
+      'Reminder to drink water and :selfcarebunny:!',
+      'Listening to Matilda because of Rith.',
+      'Do you want to show your Tuataria pride in public? YES! Then you should go to DFTBA.com and purchase yourself an It\'s a Tuatara shirt to showcase your pride!! Don\'t forget that 15% of the proceeds goes towards Project for Awesome! Nothing is better than that!! Buy your Tuatara shirt now!! http://tuataria.com/shirt',
+      ':charizardthismofo: worldsuck!',
+      ':arrow_up: :arrow_up: :arrow_down: :arrow_down: :arrow_left: :arrow_right: :arrow_left: :arrow_right: :b: :a:',
+      'Having an international dance party!'
     ];
     var random = Math.floor(Math.random() * answers.length);
     msg.channel.sendMessage(answers[random]);
