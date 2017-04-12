@@ -55,4 +55,4 @@ module.exports = class MuteCommand extends commando.Command {
     .addField('Reason:', reason);
     modlog.sendEmbed(embed);
   }
-}
+};

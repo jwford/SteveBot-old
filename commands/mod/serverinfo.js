@@ -30,4 +30,4 @@ module.exports = class ServerInfoCommand extends commando.Command {
     .addField('Created on:', createdDate);
     msg.channel.sendEmbed(embed);
   }
-}
+};

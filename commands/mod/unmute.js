@@ -45,4 +45,4 @@ module.exports = class UnmuteCommand extends commando.Command {
     .addField('User:', `${user.username}#${user.discriminator}`)
     modlog.sendEmbed(embed);
   }
-}
+};

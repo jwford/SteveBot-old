@@ -52,4 +52,4 @@ module.exports = class WarnCommand extends commando.Command {
        .addField('Reason:', reason);
        modlog.sendEmbed(embed);
     }
-}
+};

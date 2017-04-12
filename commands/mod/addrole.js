@@ -53,4 +53,4 @@ module.exports = class AddRoleCommand extends commando.Command {
     .addField('Role:', role);
     modlog.sendEmbed(embed);
   }
-}
+};
