@@ -53,4 +53,4 @@ module.exports = class KickCommand extends commando.Command {
     .addField('Reason:', reason);
     modlog.sendEmbed(embed);
   }
-}
+};
