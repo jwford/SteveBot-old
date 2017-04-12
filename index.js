@@ -3,11 +3,13 @@ const discord = require('discord.js');
 const path = require('path');
 const stevebot = new commando.Client({
   owner: '273707798670344192',
-  commandPrefix: '!'
+  commandPrefix: '!',
+  disableEveryone: true,
 });
 
 stevebot.on('ready', () => {
   console.log('SteveBot is ready!');
+  stevebot.user.setGame('Doing Steve Things');
 });
 
 //events
