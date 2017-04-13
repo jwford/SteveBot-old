@@ -11,7 +11,7 @@ module.exports = class WhatAreYouDoingCommand extends commando.Command {
     });
   }
 
-  async run(msg) {
+  run(msg) {
     var answers = [
       'Munching on eucalyptus!',
       'Wishing I had Enchilada\'s dogs.',
@@ -49,4 +49,4 @@ module.exports = class WhatAreYouDoingCommand extends commando.Command {
     var random = Math.floor(Math.random() * answers.length);
     msg.channel.sendMessage(answers[random]);
   }
-}
+};

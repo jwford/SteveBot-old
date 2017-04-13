@@ -17,9 +17,9 @@ module.exports = class DiceRollCommand extends commando.Command {
     });
   }
 
-  async run(msg, args) {
+  run(msg, args) {
     var sides = args.sides;
     var roll = Math.floor(Math.random() * sides) + 1;
     msg.channel.sendMessage('You rolled a ' + roll + '. :game_die:');
   }
-}
+};

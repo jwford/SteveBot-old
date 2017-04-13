@@ -18,7 +18,7 @@ module.exports = class GetDocCommand extends commando.Command {
     });
   }
 
-  async run(msg, args) {
+  run(msg, args) {
     const docs = new Map();
     docs.set('archived tuatara report', 'https://goo.gl/eEzr8W');
     docs.set('alive tuatara report', 'https://goo.gl/NpoSXl');
@@ -64,4 +64,4 @@ module.exports = class GetDocCommand extends commando.Command {
 
     msg.channel.sendMessage('<' + doc + '>');
   }
-}
+};

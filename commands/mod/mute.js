@@ -30,7 +30,7 @@ module.exports = class MuteCommand extends commando.Command {
     return msg.member.hasPermission('MANAGE_ROLES_OR_PERMISSIONS');
   }
 
-  async run(msg, args) {
+  run(msg, args) {
     var user = args.user;
     var modmin = msg.author;
     var reason = args.reason;

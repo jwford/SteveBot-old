@@ -15,7 +15,7 @@ module.exports = class ServerInfoCommand extends commando.Command {
     return msg.member.hasPermission('MANAGE_ROLES_OR_PERMISSIONS');
   }
 
-  async run(msg) {
+  run(msg) {
     const createdDate = new Date(msg.guild.createdTimestamp);
     const embed = new discord.RichEmbed()
     .setTitle(`${msg.guild.name}`)

@@ -30,7 +30,7 @@ module.exports = class KickCommand extends commando.Command {
     return msg.member.hasPermission('KICK_MEMBERS');
   }
 
-  async run(msg, args) {
+  run(msg, args) {
     var user = args.user;
     var modmin = msg.author;
     var reason = args.reason;
