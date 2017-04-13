@@ -5,7 +5,7 @@ module.exports = class GetDocCommand extends commando.Command {
     super(stevebot, {
       name: 'getdoc',
       aliases: ['doc'],
-      group: 'random',
+      group: 'everyone',
       memberName: 'getdoc',
       description: 'Need a doc? This is the command for you!',
       format: '[doc]',

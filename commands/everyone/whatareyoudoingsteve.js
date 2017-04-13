@@ -5,7 +5,7 @@ module.exports = class WhatAreYouDoingCommand extends commando.Command {
     super(stevebot, {
       name: 'whatareyoudoingsteve',
       aliases: ['whatareyoudoing', 'whatsupsteve', 'supsteve'],
-      group: 'random',
+      group: 'everyone',
       memberName: 'whatareyoudoingsteve',
       description: 'See what Steve is up to!',
     });

@@ -25,7 +25,7 @@ stevebot.registry
     .registerGroups([
         ['mod', 'Moderator Commands'],
         ['admin', 'Administrator Commands'],
-        ['random', 'Commands for everyone'],
+        ['everyone', 'Commands for everyone'],
         ['music', 'Play songs']
     ])
     .registerDefaults()

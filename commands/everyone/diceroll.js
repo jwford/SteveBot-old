@@ -4,7 +4,7 @@ module.exports = class DiceRollCommand extends commando.Command {
   constructor(client) {
     super(client, {
       name: 'roll',
-      group: 'random',
+      group: 'everyone',
       memberName: 'roll',
       description: 'Rolls a die.',
       format: '[number of sides]',
