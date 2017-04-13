@@ -44,13 +44,11 @@ module.exports = class RemoveRoleCommand extends commando.Command {
 
     if(!modlog) return modmin.sendMessage('I cannot find a modlog channel.');
     const embed = new discord.RichEmbed()
-    .setTitle('Role Removed from Member')
-    .setAuthor(`${modmin.username}#${modmin.discriminator}`)
-    .setThumbnail(user.avatarURL)
-    .setColor(0x000000)
+    .setTitle('Role Removed | ' + `${user.username}#${user.discriminator}`)
+    .setColor(0xf9951b)
     .setTimestamp()
-    .addField('Member:', `${user.username}#${user.discriminator}`)
-    .addField('Role:', role);
+    .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true)
+    .addField('Role:', role, true);
     modlog.sendEmbed(embed);
   }
 };

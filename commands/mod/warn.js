@@ -43,13 +43,11 @@ module.exports = class WarnCommand extends commando.Command {
 
        if(!modlog) return modmin.sendMessage('I cannot find a modlog channel.');
        const embed = new discord.RichEmbed()
-       .setTitle('Member Given a Warning')
-       .setAuthor(`${modmin.username}#${modmin.discriminator}`)
-       .setThumbnail(user.avatarURL)
-       .setColor(0x000000)
+       .setTitle('Warning | ' + `${user.username}#${user.discriminator}`)
+       .setColor(0x2463C9)
        .setTimestamp()
-       .addField('User:', `${user.username}#${user.discriminator}`)
-       .addField('Reason:', reason);
+       .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true)
+       .addField('Reason:', reason, true);
        modlog.sendEmbed(embed);
     }
 };

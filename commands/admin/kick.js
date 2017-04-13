@@ -44,13 +44,11 @@ module.exports = class KickCommand extends commando.Command {
 
     if(!modlog) return modmin.sendMessage('I cannot find a modlog channel.');
     const embed = new discord.RichEmbed()
-    .setTitle('User Kicked')
-    .setAuthor(`${modmin.username}#${modmin.discriminator}`)
-    .setColor(0x000000)
+    .setTitle('Kicked | ' + `${user.username}#${user.discriminator}`)
+    .setColor(0xe81ee1)
     .setTimestamp()
-    .setThumbnail(user.avatarURL)
-    .addField('User:', user)
-    .addField('Reason:', reason);
+    .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true)
+    .addField('Reason:', reason, true);
     modlog.sendEmbed(embed);
   }
 };

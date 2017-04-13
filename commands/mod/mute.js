@@ -46,13 +46,11 @@ module.exports = class MuteCommand extends commando.Command {
 
     if (!modlog) return modmin.sendMessage('I cannot find a modlog channel.');
     const embed = new discord.RichEmbed()
-    .setTitle('Member Muted')
-    .setAuthor(`${modmin.username}#${modmin.discriminator}`)
-    .setColor(0x000000)
-    .setThumbnail(user.avatarURL)
+    .setTitle('Mute | ' + `${user.username}#${user.discriminator}`)
+    .setColor(0x13c4be)
     .setTimestamp()
-    .addField('User:', `${user.username}#${user.discriminator}`)
-    .addField('Reason:', reason);
+    .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true)
+    .addField('Reason:', reason, true);
     modlog.sendEmbed(embed);
   }
 };
