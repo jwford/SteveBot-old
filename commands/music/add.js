@@ -4,7 +4,7 @@ class AddCommand extends commando.Command {
   constructor(client) {
     super(client, {
       name: 'add',
-      group: 'random',
+      group: 'music',
       memberName: 'add',
       description: 'Adds a song to the queue.'
     });

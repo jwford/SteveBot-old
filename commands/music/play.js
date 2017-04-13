@@ -13,7 +13,7 @@ class PlayCommand extends commando.Command {
   constructor(client) {
     super(client, {
       name: 'play',
-      group: 'random',
+      group: 'music',
       memberName: 'play',
       description: 'Plays a song.'
     });
