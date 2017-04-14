@@ -47,6 +47,7 @@ module.exports = class BanCommand extends commando.Command {
     .setTitle('Banned | ' + `${user.username}#${user.discriminator}`)
     .setColor(0xf91f1b)
     .setTimestamp()
+    .setFooter('ID: ' + user.id)
     .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true)
     .addField('Reason:', reason, true);
     modlog.sendEmbed(embed);
