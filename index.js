@@ -9,7 +9,7 @@ const stevebot = new commando.Client({
 
 stevebot.on('ready', () => {
   console.log('SteveBot is ready!');
-  stevebot.user.setGame('Doing Steve Things');
+  stevebot.user.setGame('Steve Things');
 });
 
 //events
