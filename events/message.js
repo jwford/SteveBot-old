@@ -1,4 +1,4 @@
-module.exports = message => {
+module.exports = msg => {
   var numMentions = msg.mentions.users.size;
     if (numMentions >= 15) {
       msg.delete();
