@@ -38,7 +38,7 @@ module.exports = class RemoveRoleCommand extends commando.Command {
     var modlog = msg.guild.channels.find('name', 'modlog');
 
     if (!msg.guild.member(user).roles.get(role.id)) return modmin.sendMessage(`${user.username}#${user.discriminator} does not have that role.`);
-    if (msg.guild.member(modmin).highestRole == role) return modmin.sendMessage('You cannot give the user that role.');
+    if (msg.guild.member(modmin).highestRole.comparePositionTo(role) > 0) return modmin.sendMessage('You cannot remove the role from that user');
 
     msg.guild.member(user).removeRole(role);
 
