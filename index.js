@@ -23,7 +23,3 @@ stevebot.login('Mjk3ODkwNzQyNzcxMjUzMjU4.C8HX5Q.L0hwHVfPxYsHrGKPgVVrug7Iu58');
 process.on("unhandledRejection", err => {
   console.error("Uncaught Promise Error: \n" + err.stack);
 });
-
-module.exports = stevebot => {
-  stevebot.on('message', () => events('message'));
-};
