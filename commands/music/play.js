@@ -4,46 +4,27 @@ const commando = require('discord.js-commando');
 
 const ytdl = require("youtube-dl");
 const request = require("request");
+const musicPlayer = require("./MusicPlayer.js");
 
-var dispatcher = null;
+//var playList = require('./PriorityQueue.js');
 
-//var priorityqueue = require('./PriorityQueue');
+//var dispatcher = null;
 
 class PlayCommand extends commando.Command {
-  constructor(client) {
-    super(client, {
+
+  constructor(stevebot) {
+    super(stevebot, {
       name: 'play',
       group: 'music',
       memberName: 'play',
       description: 'Plays a song.'
     });
-
-    function playSong(message, link) {
-
-      var voiceChannel = message.guild.channels.find('name', '🐨 voice_1');
-
-      voiceChannel.join()
-      .then(connection => {
-        var stream = ytdl(link);
-        dispatcher = connection.playStream(stream);
-      })
-      .catch(console.error);
-
-      message.channel.sendMessage("Now playing: " + "<" + link + ">");
-
-      message.channel.sendMessage("Joining the voice party!");
-      message.channel.sendMessage("_Being a lil shitbag_");
-
-    }
-
   }
 
-
-
-  async run(message, args) {
+  run(message, args) {
 
       if (args == "stop") {
-        dispatcher.end();
+        //dispatcher.end();
       } else {
         var link = message.content.split(" ");
         link.splice(0, 1);
@@ -55,19 +36,35 @@ class PlayCommand extends commando.Command {
 
         //playSong(message, link);
 
-        message.channel.sendMessage("Now playing: " + "<" + link + ">");
+        musicPlayer.addSong(link);
+
+        //message.channel.sendMessage("Added " + musicPlayer.getQueue().getCurrentSong());
+
+        //playList.add(link);
+
+        musicPlayer.play();
+
+
+
+  /*      message.channel.sendMessage("Now playing: " + "<" + link + ">");
 
         var voiceChannel = message.guild.channels.find('name', '🐨 voice_1');
+
+
 
         voiceChannel.join()
         .then(connection => {
           var stream = ytdl(link);
-          dispatcher = connection.playStream(stream);
+          //dispatcher = connection.playStream(stream);
+          musicPlayer.setPlayerDispatcher(dispatcher);
+          playList.add(link);
+          musicPlayer.play();
+          //message.channel.sendMessage("Added " + playList.getQueue()[0]);
         })
         .catch(console.error);
-
-        message.channel.sendMessage("Joining the voice party!");
-        message.channel.sendMessage("_Being a lil shitbag_");
+*/
+        //message.channel.sendMessage("Joining the voice party!");
+        //message.channel.sendMessage("_Being a lil shitbag_");
 
       }
   }

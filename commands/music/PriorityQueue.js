@@ -1,13 +1,28 @@
-var queue = [];
+let playList;// = new Array();
+let currentSong;
 
-class PriorityQueue {
+function add(song) {
+    //getQueue().push(song);
+    this.playList = song;
 
-  add (song) {
-    this.queue.push(song);
-  }
-
-  remove (song) {
-    this.queue.pop(song);
-  }
-
+    console.log("Added song to queue");
+    console.log(playList);
 }
+
+function remove(song) {
+    //this.queue.pop(song);
+}
+
+function getQueue() {
+    return this.playList;
+}
+
+function getCurrentSong() {
+  return this.playList;
+}
+
+module.exports = {
+    add, getQueue, getCurrentSong
+};
+
+//module.exports = PriorityQueue;

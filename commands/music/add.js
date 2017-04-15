@@ -1,8 +1,10 @@
 const commando = require('discord.js-commando');
+const queue = require("./PriorityQueue.js");
 
 class AddCommand extends commando.Command {
-  constructor(client) {
-    super(client, {
+
+  constructor(stevebot) {
+    super(stevebot, {
       name: 'add',
       group: 'music',
       memberName: 'add',
@@ -10,8 +12,13 @@ class AddCommand extends commando.Command {
     });
   }
 
-  async run(message, args) {
+  run(message, args) {
+
+    let link = "https://www.youtube.com/watch?v=XXUCFk8VJFY";
+
+    queue.add(link);
     message.channel.sendMessage("Added to the queue!");
+    message.channel.sendMessage("Currently in queue: " + "<" + queue.getCurrentSong() + ">");
   }
 }
 
