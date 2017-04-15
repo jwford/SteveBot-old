@@ -1,28 +1,37 @@
-let playList;// = new Array();
+//let playList;// = new Array();
+//const ytdl = require("youtube-dl");
+
 let currentSong;
 
-function add(song) {
-    //getQueue().push(song);
-    this.playList = song;
+class PriorityQueue {
 
-    console.log("Added song to queue");
-    console.log(playList);
+  constructor() {
+    this.playList = new Array();
+  }
+
+  add(song) {
+      //getQueue().push(song);
+      this.getQueue().push(song);
+
+      console.log("Added " + "<" + song + ">" + " to the queue");
+      console.log(this.playList);
+  }
+
+  remove(song) {
+      //this.queue.pop(song);
+  }
+
+  getQueue() {
+      return this.playList;
+  }
+
+  getCurrentSong() {
+    return this.playList[0];
+  }
+
 }
+//module.exports = {
+  //  add, getQueue, getCurrentSong
+//};
 
-function remove(song) {
-    //this.queue.pop(song);
-}
-
-function getQueue() {
-    return this.playList;
-}
-
-function getCurrentSong() {
-  return this.playList;
-}
-
-module.exports = {
-    add, getQueue, getCurrentSong
-};
-
-//module.exports = PriorityQueue;
+module.exports = PriorityQueue;

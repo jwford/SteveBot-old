@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-const musicPlayer = require('./MusicPlayer.js');
+const JukeBox = require('./JukeBox.js');
 
 class StopCommand extends commando.Command {
 
@@ -14,7 +14,7 @@ class StopCommand extends commando.Command {
   }
 
   run(message, args) {
-    musicPlayer.getPlayerDispatcher().end();
+    JukeBox.getPlayer().getPlayerDispatcher().end();
     message.channel.sendMessage("Stopped the current song");
   }
 }

@@ -1,6 +1,10 @@
 const commando = require('discord.js-commando');
 
-const musicPlayer = require("./MusicPlayer.js");
+//const MusicPlayer = require("./MusicPlayer.js");
+
+const JukeBox = require("./JukeBox.js");
+
+//let myMusicPlayer;
 
 class MusicCommand extends commando.Command {
 
@@ -14,20 +18,25 @@ class MusicCommand extends commando.Command {
   }
 
   run(message, args) {
-    let voiceChannel = message.guild.channels.find('name', 'music');
-    musicPlayer.joinVoiceChannel(voiceChannel);
+    var voiceChannel = message.guild.channels.find('name', '🎵 music');
+
+    //var myMusicPlayer = new MusicPlayer(voiceChannel);
+    JukeBox.startPlayer(voiceChannel);
+
+    JukeBox.getPlayer().joinVoiceChannel();
+    //myMusicPlayer.joinVoiceChannel();
 
     message.channel.sendMessage("Joined " + voiceChannel + ". Ready to play!");
     console.log("Ready to play... ");
 
+    //JukeBox.getPlayer().addSong("https://www.youtube.com/watch?v=XXUCFk8VJFY");
+    //myMusicPlayer.addSong("https://www.youtube.com/watch?v=XXUCFk8VJFY");
 
-    musicPlayer.addSong("https://www.youtube.com/watch?v=XXUCFk8VJFY");
-
-    message.channel.sendMessage("Added " + "<" + musicPlayer.getQueue() + ">");
+    //message.channel.sendMessage("Added " + "<" + musicPlayer.getQueue() + ">");
 
     //playList.add(link);
 
-    musicPlayer.play();
+    //myMusicPlayer.play();
 
 
 

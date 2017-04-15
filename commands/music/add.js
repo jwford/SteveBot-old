@@ -1,5 +1,9 @@
 const commando = require('discord.js-commando');
-const queue = require("./PriorityQueue.js");
+//const queue = require("./PriorityQueue.js");
+//const MusicPlayer = require("./MusicPlayer.js");
+const ytdl = require("youtube-dl");
+
+const JukeBox = require("./JukeBox.js");
 
 class AddCommand extends commando.Command {
 
@@ -14,11 +18,21 @@ class AddCommand extends commando.Command {
 
   run(message, args) {
 
-    let link = "https://www.youtube.com/watch?v=XXUCFk8VJFY";
+    var link = message.content.split(" ");
+    link.splice(0, 1);
+     link = link.join(" ");
 
-    queue.add(link);
-    message.channel.sendMessage("Added to the queue!");
-    message.channel.sendMessage("Currently in queue: " + "<" + queue.getCurrentSong() + ">");
+    if (link.charAt(0) == '<') {
+      link = link.substr(1).slice(0, -1);
+    }
+
+    JukeBox.getPlayer().addSong(link);
+
+    ytdl.getInfo(link, function(err, info) {
+      message.channel.sendMessage("Song title: "+ info.title);
+    });
+
+    //message.channel.sendMessage("Currently in queue: " + "<" + JukeBox.getPlayer().getQueue().getQueue().toString() + ">");
   }
 }
 

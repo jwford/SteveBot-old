@@ -1,4 +1,4 @@
-const queue = require("./PriorityQueue.js");
+const Queue = require("./PriorityQueue.js");
 const ytdl = require("youtube-dl");
 
 //let playList;
@@ -7,59 +7,73 @@ let connection;
 
 let playerDispatcher;
 
-let voiceChannel;
+//var voiceChannel;
 
   //var currentSong;
   //var connection;
 
-function getQueue() {
-  return queue.getQueue();
-}
+class MusicPlayer {
 
-function getPlayerDispatcher() {
-  return this.playerDispatcher;
-}
+  constructor(voiceChannel) {
+    this.queue = new Queue();
+    this.voiceChannel = voiceChannel;
+  }
 
-function setPlayerDispatcher(dispatcher) {
-  this.playerDispatcher = dispatcher;
-}
+  getQueue() {
+    return this.queue;
+  }
 
-function setConnection(connection) {
-  this.connection = connection;
-  console.log("Connection set...");
-}
+  getPlayerDispatcher() {
+    return this.playerDispatcher;
+  }
 
-function getConnection() {
-  return this.connection;
-}
+  setPlayerDispatcher(dispatcher) {
+    this.playerDispatcher = dispatcher;
+  }
 
-function joinVoiceChannel(voiceChannel) {
-  this.voiceChannel = voiceChannel;
-  this.voiceChannel.join().then(connection => {
-    setConnection(connection);
-  });
-  console.log("Joined voice channel...");
-}
+  setConnection(connection) {
+    this.connection = connection;
+    console.log("Connection set...");
+  }
 
-function getVoiceChannel() {
-  return this.voiceChannel;
-}
+  getConnection() {
+    return this.connection;
+  }
 
-function addSong(song) {
-  queue.add(song);
-}
+  joinVoiceChannel() {
+    this.getVoiceChannel().join().then(connection => {
+      this.setConnection(connection);
+    });
+    console.log("Joined voice channel " + this.getVoiceChannel());
+  }
 
-function play() {
-  let stream = ytdl(queue.getCurrentSong());
-  let dispatcher = this.connection.playStream(stream);
-  setPlayerDispatcher(dispatcher);
+  getVoiceChannel() {
+    return this.voiceChannel;
+  }
+
+  addSong(song) {
+    this.getQueue().add(song);
+  }
+
+  play() {
+    var stream = ytdl(this.getQueue().getCurrentSong());
+    try {
+      var dispatcher = this.getVoiceChannel().connection.playStream(stream);
+    } catch(e) {
+      console.log(e);
+    }
+    this.setPlayerDispatcher(dispatcher);
+  }
+
 }
 
 //function play
 
-module.exports = {
-  getQueue, getPlayerDispatcher, setPlayerDispatcher, joinVoiceChannel, addSong, play
-};
+//module.exports = {
+  //getQueue, getPlayerDispatcher, setPlayerDispatcher, joinVoiceChannel, addSong, play
+//};
+
+module.exports = MusicPlayer;
 
 //export {dispatcher};
 

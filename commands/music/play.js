@@ -3,8 +3,10 @@ const commando = require('discord.js-commando');
 //var LOADDIR = "C:/Users/BoedJ/Music/porzgoret.mp3";
 
 const ytdl = require("youtube-dl");
-const request = require("request");
-const musicPlayer = require("./MusicPlayer.js");
+//const request = require("request");
+//const MusicPlayer = require("./MusicPlayer.js");
+
+const JukeBox = require("./JukeBox.js")
 
 //var playList = require('./PriorityQueue.js');
 
@@ -23,26 +25,23 @@ class PlayCommand extends commando.Command {
 
   run(message, args) {
 
-      if (args == "stop") {
-        //dispatcher.end();
-      } else {
-        var link = message.content.split(" ");
-        link.splice(0, 1);
-  		  link = link.join(" ");
+      var link = message.content.split(" ");
+      link.splice(0, 1);
+  		 link = link.join(" ");
 
-        if (link.charAt(0) == '<') {
-          link = link.substr(1).slice(0, -1);
-        }
+      if (link.charAt(0) == '<') {
+        link = link.substr(1).slice(0, -1);
+      }
 
-        //playSong(message, link);
+      //playSong(message, link);
 
-        musicPlayer.addSong(link);
+      //JukeBox.getPlayer().addSong(link);
 
-        //message.channel.sendMessage("Added " + musicPlayer.getQueue().getCurrentSong());
+      //message.channel.sendMessage("Added " + musicPlayer.getQueue().getCurrentSong());
 
-        //playList.add(link);
+      //playList.add(link);
 
-        musicPlayer.play();
+      JukeBox.getPlayer().play();
 
 
 
@@ -66,7 +65,7 @@ class PlayCommand extends commando.Command {
         //message.channel.sendMessage("Joining the voice party!");
         //message.channel.sendMessage("_Being a lil shitbag_");
 
-      }
+
   }
 
 }
