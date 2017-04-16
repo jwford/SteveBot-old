@@ -19,7 +19,7 @@ class PlayCommand extends commando.Command {
       name: 'play',
       group: 'music',
       memberName: 'play',
-      description: 'Plays a song.'
+      description: 'Starts playing the songs in the queue.'
     });
   }
 

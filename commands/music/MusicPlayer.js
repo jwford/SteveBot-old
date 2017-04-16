@@ -55,7 +55,12 @@ class MusicPlayer {
     this.getQueue().add(song);
   }
 
-  play() {
+  removeSong(pos) {
+    this.getQueue().getQueue().splice(pos, 1);
+    this.getQueue().getTitles().splice(pos, 1);
+  }
+
+  async play() {
     var stream = ytdl(this.getQueue().getCurrentSong());
     try {
       var dispatcher = this.getVoiceChannel().connection.playStream(stream);
@@ -63,6 +68,18 @@ class MusicPlayer {
       console.log(e);
     }
     this.setPlayerDispatcher(dispatcher);
+
+    dispatcher.once('end', () => {
+      this.skip();
+    });
+  }
+
+  skip() {
+    //removes first element of array
+    var skippedSong = this.getQueue().getCurrentSongTitle();
+    this.removeSong(0);
+    this.play();
+    return skippedSong;
   }
 
 }

@@ -16,7 +16,7 @@ class AddCommand extends commando.Command {
     });
   }
 
-  run(message, args) {
+  async run(message, args) {
 
     var link = message.content.split(" ");
     link.splice(0, 1);
@@ -29,7 +29,7 @@ class AddCommand extends commando.Command {
     JukeBox.getPlayer().addSong(link);
 
     ytdl.getInfo(link, function(err, info) {
-      message.channel.sendMessage("Song title: "+ info.title);
+      message.channel.sendMessage("Added " + info.title);
     });
 
     //message.channel.sendMessage("Currently in queue: " + "<" + JukeBox.getPlayer().getQueue().getQueue().toString() + ">");
