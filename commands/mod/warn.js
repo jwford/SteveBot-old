@@ -37,7 +37,7 @@ module.exports = class WarnCommand extends commando.Command {
       var modlog = msg.guild.channels.find('name', 'modlog');
 
       if (user.id == this.client.user.id) return modmin.sendMessage('Using this command on me will break me. What did I ever do to you, anyway?');
-      if (user.id == modmin.id) return modmin.sendMessage('Why would you want to mute yourself?');
+      if (user.id == modmin.id) return modmin.sendMessage('Why would you want to warn yourself?');
 
       user.sendMessage(user + ' please turn the bus around in ' + msg.channel + '. ' + reason + ' :bus:');
 
