@@ -44,6 +44,8 @@ module.exports = class MarkdownCommand extends commando.Command {
       case 'underline bold italics':
         msg.channel.sendMessage('\`__***underline bold italics***__\`');
         break;
+      default:
+        msg.reply('that\'s not a markdown thing. Stop making typos before the Jonathans notice.');
     }
   }
 };
