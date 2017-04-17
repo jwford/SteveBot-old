@@ -61,7 +61,7 @@ module.exports = class TempConvertCommand extends commando.Command {
         break;
         case 'kc':
         finalTemp = firstTemp - 273.15;
-        msg.channel.sendMessage(firstTemp + '° C is about ' + Math.floor(finalTemp) + '° K.');
+        msg.channel.sendMessage(firstTemp + '° K is about ' + Math.floor(finalTemp) + '° C.');
         break;
       default:
         msg.reply('you probably entered an invalid temperature scale. Try harder next time, bud.');
