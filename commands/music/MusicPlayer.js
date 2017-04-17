@@ -70,7 +70,7 @@ class MusicPlayer {
     this.setPlayerDispatcher(dispatcher);
 
     dispatcher.once('end', () => {
-      this.skip();
+      if (this.getQueue().getQueue().length > 0) this.skip();
     });
   }
 

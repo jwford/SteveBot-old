@@ -19,7 +19,14 @@ class QueueCommand extends commando.Command {
   run(message, args) {
 
     var songList = JukeBox.getPlayer().getQueue().getQueue();
-    var titleList = JukeBox.getPlayer().getQueue().getTitles();
+    var titleList;
+    if (songList.length > 0) {
+      titleList = JukeBox.getPlayer().getQueue().getTitles();
+    } else {
+      titleList = "The queue is currently empty!";
+    }
+
+
 /*
     for (var i = 0; i < songList.length; i++) {
       ytdl.getInfo(songList[i], function(err, info) {
