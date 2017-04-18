@@ -16,6 +16,9 @@ module.exports = class ServerInfoCommand extends commando.Command {
   }
 
   run(msg) {
+    var roles = msg.guild.roles.map(r => r.name).join(', ');
+    roles = roles.slice(1);
+
     const embed = new discord.RichEmbed()
     .setTitle('Server Information')
     .setThumbnail(msg.guild.iconURL)
@@ -31,11 +34,12 @@ module.exports = class ServerInfoCommand extends commando.Command {
     .addField('Offline:', msg.guild.members.filter(u => u.user.presence.status === 'offline').size, true)
     .addField('Channels:', msg.guild.channels.size, true)
     .addField('Region:', msg.guild.region, true)
-    .addField('Roles:', msg.guild.roles.size, true)
+    .addField('Number of Roles:', msg.guild.roles.size, true)
     .addField('Emojis:', msg.guild.emojis.size, true)
     .addField('Default Channel:', msg.guild.defaultChannel.name, true)
     .addField('Accessible:', msg.guild.available, true)
     .addField('Verification Level:', msg.guild.verificationLevel, true)
+    .addField('Roles:', roles, true)
     .setFooter('Created On: ' + msg.guild.createdAt);
     msg.channel.sendEmbed(embed);
   }
