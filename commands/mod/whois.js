@@ -17,6 +17,10 @@ module.exports = class WhoIsCommand extends commando.Command {
     });
   }
 
+  hasPermission(msg) {
+    return msg.member.hasPermission('MANAGE_ROLES_OR_PERMISSIONS');
+  }
+
   run(msg, args) {
     var user = args.user;
     var userAsMember = msg.guild.member(user);
