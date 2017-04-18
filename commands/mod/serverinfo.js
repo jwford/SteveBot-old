@@ -18,16 +18,26 @@ module.exports = class ServerInfoCommand extends commando.Command {
   run(msg) {
     const createdDate = new Date(msg.guild.createdTimestamp);
     const embed = new discord.RichEmbed()
-    .setTitle(`${msg.guild.name}`)
-    .setColor(0x000000)
-    .addField('Name:', msg.guild.name)
-    .addField('ID:', msg.guild.id)
-    .addField('Owner:', msg.guild.owner)
-    .addField('Members:', msg.guild.memberCount)
-    .addField('Channels:', msg.guild.channels.size)
-    .addField('Region:', msg.guild.region)
-    .addField('Roles:', msg.guild.roles.size)
-    .addField('Created on:', createdDate);
+    .setTitle('Server Information')
+    .setThumbnail(msg.guild.iconURL)
+    .setURL('http://tuataria.com')
+    .setColor(0x80af18)
+    .addField('Name:', msg.guild.name, true)
+    .addField('ID:', msg.guild.id, true)
+    .addField('Owner:', msg.guild.owner, true)
+    .addField('Total Members:', msg.guild.memberCount, true)
+    .addField('Humans:', msg.guild.members.filter(u => u.user.bot === false).size, true)
+    .addField('Bots:', msg.guild.members.filter(u => u.user.bot === true).size, true)
+    .addField('Online:', msg.guild.members.filter(u => u.user.presence.status === 'online').size, true)
+    .addField('Offline:', msg.guild.members.filter(u => u.user.presence.status === 'offline').size, true)
+    .addField('Channels:', msg.guild.channels.size, true)
+    .addField('Region:', msg.guild.region, true)
+    .addField('Roles:', msg.guild.roles.size, true)
+    .addField('Emojis:', msg.guild.emojis.size, true)
+    .addField('Default Channel:', msg.guild.defaultChannel.name, true)
+    .addField('Accessable:', msg.guild.available, true)
+    .addField('Verification Level:', msg.guild.verificationLevel, true)
+    .setFooter('Created on: ' + createdDate);
     msg.channel.sendEmbed(embed);
   }
 };
