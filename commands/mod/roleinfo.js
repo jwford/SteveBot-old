@@ -12,7 +12,7 @@ module.exports = class ListMembersInCommand extends commando.Command {
         key: 'role',
         label: 'role',
         prompt: 'What role do you want information about?',
-        type: 'string'
+        type: 'role'
       }]
     });
   }
@@ -24,12 +24,7 @@ module.exports = class ListMembersInCommand extends commando.Command {
   run(msg, args) {
     var role = args.role;
 
-    if (!msg.channel.guild.roles.find('name', role)) {
-      return msg.reply('I can\'t find that role.');
-    } else {
-      role = msg.channel.guild.roles.find('name', role);
-    }
-
+    if (!msg.channel.guild.roles.get(role.id)) return msg.reply('I can\'t find that role.');
     var users = role.members.map(u => u.user).join(', ');
 
     var permissions = '';
@@ -146,6 +141,8 @@ module.exports = class ListMembersInCommand extends commando.Command {
 
     if (users.length > 1024) {
       users = 'There\'s too many users in this role to display.';
+    } else if (users.length === 0) {
+      users = 'No users in this role.';
     }
 
     const embed = new discord.RichEmbed()
