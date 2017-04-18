@@ -7,6 +7,7 @@ module.exports = msg => {
   .setTitle('Message Deleted | ' + `${msg.author.username}#${msg.author.discriminator}`)
   .setColor(0xd14927)
   .setTimestamp()
-  .addField('Content:',  msg.content, true);
+  .addField('Content:',  msg.content, true)
+  .addField('Message Sent at:', msg.createdAt, true);
   actionlog.sendEmbed(embed);
 };
