@@ -16,7 +16,6 @@ module.exports = class ServerInfoCommand extends commando.Command {
   }
 
   run(msg) {
-    const createdDate = new Date(msg.guild.createdTimestamp);
     const embed = new discord.RichEmbed()
     .setTitle('Server Information')
     .setThumbnail(msg.guild.iconURL)
@@ -37,7 +36,7 @@ module.exports = class ServerInfoCommand extends commando.Command {
     .addField('Default Channel:', msg.guild.defaultChannel.name, true)
     .addField('Accessable:', msg.guild.available, true)
     .addField('Verification Level:', msg.guild.verificationLevel, true)
-    .setFooter('Created on: ' + createdDate);
+    .setFooter('Created On: ' + msg.guild.createdAt);
     msg.channel.sendEmbed(embed);
   }
 };
