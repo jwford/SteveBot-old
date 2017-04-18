@@ -30,6 +30,7 @@ module.exports = class LockdownCommand extends commando.Command {
     if (!modlog) return console.log('No modlog channel.');
     const embed = new discord.RichEmbed()
     .setTitle('Channel Locked | ' + `${msg.channel.name}`)
+    .setURL(`http://www.tuataria.com/tuataria/bios/#${admin.username.toLowerCase()}`)
     .setColor(0x6518bc)
     .setTimestamp()
     .addField('Admin', `${admin.username}#${admin.discriminator}`, true)

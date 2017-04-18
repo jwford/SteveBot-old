@@ -50,6 +50,7 @@ module.exports = class UnbanCommand extends commando.Command {
     if (!modlog) return modmin.sendMessage('I can\'t find a modlog channel');
     const embed = new discord.RichEmbed()
     .setTitle('Unbanned | ' + `${user.username}#${user.discriminator}`)
+    .setURL(`http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0xf91f1b)
     .setTimestamp()
     .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true)

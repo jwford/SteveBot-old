@@ -45,6 +45,7 @@ module.exports = class BanCommand extends commando.Command {
     if(!modlog) return msg.reply('I can\'t find a modlog channel.');
     const embed = new discord.RichEmbed()
     .setTitle('Banned | ' + `${user.username}#${user.discriminator}`)
+    .setURL(`http://www.tuataria.com/tuataria/bios/#${admin.username.toLowerCase()}`)
     .setColor(0xf91f1b)
     .setTimestamp()
     .setFooter('ID: ' + user.id)

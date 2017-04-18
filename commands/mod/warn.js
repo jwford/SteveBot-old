@@ -44,6 +44,7 @@ module.exports = class WarnCommand extends commando.Command {
        if(!modlog) return modmin.sendMessage('I cannot find a modlog channel.');
        const embed = new discord.RichEmbed()
        .setTitle('Warning | ' + `${user.username}#${user.discriminator}`)
+       .setURL(`http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
        .setColor(0x2463C9)
        .setTimestamp()
        .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true)

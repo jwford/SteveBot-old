@@ -47,6 +47,7 @@ module.exports = class MuteCommand extends commando.Command {
     if (!modlog) return modmin.sendMessage('I cannot find a modlog channel.');
     const embed = new discord.RichEmbed()
     .setTitle('Mute | ' + `${user.username}#${user.discriminator}`)
+    .setURL(`http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0x13c4be)
     .setTimestamp()
     .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true)

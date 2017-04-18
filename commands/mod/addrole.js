@@ -45,6 +45,7 @@ module.exports = class AddRoleCommand extends commando.Command {
     if(!modlog) return modmin.sendMessage('I cannot find a modlog channel.');
     const embed = new discord.RichEmbed()
     .setTitle('Role Added | ' + `${user.username}#${user.discriminator}`)
+    .setURL(`http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0xf9951b)
     .setTimestamp()
     .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true)
