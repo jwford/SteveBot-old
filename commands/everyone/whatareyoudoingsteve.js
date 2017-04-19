@@ -17,7 +17,7 @@ module.exports = class WhatAreYouDoingCommand extends commando.Command {
       'Wishing I had Enchilada\'s dogs.',
       'Looking for my last pixel on koalastothemax!',
       'Wondering why you all love Hamilton so much...',
-      ':dumpsterfire:',
+      '<:dumpsterfire:304109947682291741>',
       'IF YOU SHOULD BE SLEEPING, GO TO SLEEP.',
       '*wakes up* ..wha? John Green was here? IS HE HERE NOW??? Oh, okay. Back to sleep...',
       'If you aren\'t bringing me eucalyptus, go away.',
