@@ -12,6 +12,10 @@ module.exports = msg => {
     }
     var dftba = new RegExp('dftba', 'i');
     if (dftba.test(msg.content)) {
-      msg.react(msg.channel.guild.emojis.find('name', 'dftba'));
+      if (!msg.channel.guild.emojis.find('name', 'dftba')) {
+        return console.log('That emoji does not exist');
+      } else {
+        msg.react(msg.channel.guild.emojis.find('name', 'dftba'));
+      }
     }
 };
