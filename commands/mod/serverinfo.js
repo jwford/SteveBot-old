@@ -39,7 +39,7 @@ module.exports = class ServerInfoCommand extends commando.Command {
     .addField('Default Channel:', msg.guild.defaultChannel.name, true)
     .addField('Accessible:', msg.guild.available, true)
     .addField('Verification Level:', msg.guild.verificationLevel, true)
-    .addField('Roles:', roles, true)
+    .addField('Roles:', roles)
     .setFooter('Created On: ' + msg.guild.createdAt);
     msg.channel.sendEmbed(embed);
   }
