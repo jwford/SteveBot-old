@@ -14,6 +14,7 @@ module.exports = msg => {
     var dftba = new RegExp('dftba', 'i');
     var thankyou = new RegExp('thank you', 'i');
     var noedge = new RegExp('no edge', 'i');
+    var pizza = new RegExp('pizza', 'i');
     if (dftba.test(msg.content)) {
       if (!msg.channel.guild.emojis.find('name', 'dftba')) {
         return console.log('That emoji does not exist');
@@ -33,6 +34,13 @@ module.exports = msg => {
         return console.log('That emoji does not exist.');
       } else {
         msg.react(msg.channel.guild.emojis.find('name', 'noedge'));
+      }
+    }
+    if (pizza.test(msg.content)) {
+      if (!msg.channel.guild.emojis.find('name', 'pizzajohn')) {
+        return console.log('That emoji does not exist.');
+      } else {
+        msg.react(msg.channel.guild.emojis.find('name', 'pizzajohn'));
       }
     }
 };
