@@ -27,7 +27,6 @@ module.exports = class ListMembersInCommand extends commando.Command {
     if (!msg.channel.guild.roles.get(role.id)) return msg.reply('I can\'t find that role.');
     var users = role.members.map(u => u.user).join(', ');
 
-    function getPermissions(role) {
       var permissions = '';
       var newPermission;
       if (role.hasPermission('ADMINISTRATOR')) {
@@ -139,8 +138,6 @@ module.exports = class ListMembersInCommand extends commando.Command {
         permissions = permissions + newPermission;
       }
       permissions = permissions.slice(0, permissions.length - 2);
-      return permissions;
-    }
 
     if (users.length > 1024) {
       users = 'There\'s too many users in this role to display.';
