@@ -10,7 +10,8 @@ module.exports = msg => {
         msg.reply('I\'m trying to eat eucalyptus in peace, so please stop mentioning everyone.');
       }
     }
-    if (msg.content.includes('dftba') || msg.content.includes('DFTBA') || msg.content.includes('Dftba')) {
+    var dftba = new RegExp('dftba', 'i');
+    if (dftba.test(msg.content)) {
       msg.react(msg.channel.guild.emojis.find('name', 'dftba'));
     }
 };
