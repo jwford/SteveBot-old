@@ -19,11 +19,29 @@ module.exports = class ServerInfoCommand extends commando.Command {
     var roles = msg.guild.roles.map(r => r.name).join(', ');
     roles = roles.slice(1);
 
+    var verificationLevel = msg.guild.verificationLevel;
+
+    switch(verificationLevel) {
+      case 0:
+        verificationLevel = 'None';
+        break;
+      case 1:
+        verificationLevel = 'Low';
+        break;
+      case 2:
+        verificationLevel = 'Medium';
+        break;
+      case 3:
+        verificationLevel = 'Table Flip';
+        break;
+    }
+
     const embed = new discord.RichEmbed()
     .setTitle('Server Information')
     .setThumbnail(msg.guild.iconURL)
     .setURL('http://tuataria.com')
     .setColor(0x80af18)
+    .setTimestamp()
     .addField('Name:', msg.guild.name, true)
     .addField('ID:', msg.guild.id, true)
     .addField('Owner:', msg.guild.owner, true)
@@ -38,9 +56,9 @@ module.exports = class ServerInfoCommand extends commando.Command {
     .addField('Emojis:', msg.guild.emojis.size, true)
     .addField('Default Channel:', msg.guild.defaultChannel.name, true)
     .addField('Accessible:', msg.guild.available, true)
-    .addField('Verification Level:', msg.guild.verificationLevel, true)
+    .addField('Verification Level:', verificationLevel, true)
     .addField('Roles:', roles)
-    .setFooter('Created On: ' + msg.guild.createdAt);
+    .addField('Created On:', msg.guild.createdAt, true);
     msg.channel.sendEmbed(embed);
   }
 };
