@@ -9,13 +9,13 @@ class StopCommand extends commando.Command {
       name: 'stop',
       group: 'music',
       memberName: 'stop',
-      description: 'Adds a song to the queue.'
+      description: 'Stops playing the current song and clears the queue.'
     });
   }
 
   run(message, args) {
-    JukeBox.getPlayer().getPlayerDispatcher().end();
-    message.channel.sendMessage("Stopped the current song");
+    JukeBox.stopPlayer();
+    message.channel.sendMessage("Stopped the current song and cleared the queue.");
   }
 }
 

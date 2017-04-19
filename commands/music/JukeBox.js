@@ -10,4 +10,8 @@ function getPlayer() {
   return this.player;
 }
 
-module.exports = {startPlayer,getPlayer};
+function stopPlayer() {
+  this.getPlayer().stop();
+}
+
+module.exports = {startPlayer,getPlayer, stopPlayer};

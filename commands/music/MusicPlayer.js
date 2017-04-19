@@ -1,17 +1,6 @@
 const Queue = require("./PriorityQueue.js");
 const ytdl = require("youtube-dl");
 
-//let playList;
-
-let connection;
-
-let playerDispatcher;
-
-//var voiceChannel;
-
-  //var currentSong;
-  //var connection;
-
 class MusicPlayer {
 
   constructor(voiceChannel) {
@@ -58,6 +47,25 @@ class MusicPlayer {
   removeSong(pos) {
     this.getQueue().getQueue().splice(pos, 1);
     this.getQueue().getTitles().splice(pos, 1);
+    console.log("Removed a song");
+  }
+
+  async addPlaylist(link) {
+    var stream = ytdl(link);
+    this.getVoiceChannel().connection.playStream(stream);
+    console.log("Added playlist");
+    var that = this;
+
+  /*  stream.on('next', () => {
+      this.getVoiceChannel().connection.playStream(stream);
+      console.log("Playing the next song");
+    }); */
+
+    stream.on('next', () => {
+        that.getVoiceChannel().connection.playStream(stream);
+        console.log("Playing the next song");
+      });
+
   }
 
   async play() {
@@ -70,28 +78,25 @@ class MusicPlayer {
     this.setPlayerDispatcher(dispatcher);
 
     dispatcher.once('end', () => {
-      if (this.getQueue().getQueue().length > 0) this.skip();
+      var queueLength = this.getQueue().getQueue().length;
+      if (queueLength > 0) {
+        this.removeSong(0);
+        if (queueLength > 1) this.play();
+      }
     });
   }
 
   skip() {
-    //removes first element of array
     var skippedSong = this.getQueue().getCurrentSongTitle();
-    this.removeSong(0);
-    this.play();
+    this.getPlayerDispatcher().end();
     return skippedSong;
+  }
+
+  stop() {
+    this.getPlayerDispatcher().end();
+    this.getQueue().empty();
   }
 
 }
 
-//function play
-
-//module.exports = {
-  //getQueue, getPlayerDispatcher, setPlayerDispatcher, joinVoiceChannel, addSong, play
-//};
-
 module.exports = MusicPlayer;
-
-//export {dispatcher};
-
-//module.exports = MusicPlayer;

@@ -1,5 +1,4 @@
 const commando = require('discord.js-commando');
-
 const JukeBox = require('./JukeBox.js');
 
 class SkipCommand extends commando.Command {

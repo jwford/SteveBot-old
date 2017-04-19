@@ -1,7 +1,4 @@
-//let playList;// = new Array();
 const ytdl = require("youtube-dl");
-
-let currentSong;
 
 class PriorityQueue {
 
@@ -11,28 +8,24 @@ class PriorityQueue {
   }
 
   add(song) {
-      //getQueue().push(song);
       this.getQueue().push(song);
 
       var that = this;
 
       ytdl.getInfo(song, function(err, info) {
         if (err) throw err;
-      //  var title = info.title;
         that.getTitles().push(info.title);
         console.log("Title added: " + info.title);
       });
-
-      //this.getTitles().push(title);
-
-
-
-      //console.log("Added " + "<" + song + ">" + " to the queue");
-      //console.log(this.playList);
   }
 
   remove(song) {
 
+  }
+
+  empty() {
+    this.getQueue().splice(0, this.getQueue().length);
+    console.log("Cleared queue!");
   }
 
   getQueue() {
@@ -44,7 +37,7 @@ class PriorityQueue {
   }
 
   getCurrentSong() {
-    return this.playList[0];
+    return this.getQueue()[0];
   }
 
   getCurrentSongTitle() {
@@ -52,8 +45,5 @@ class PriorityQueue {
   }
 
 }
-//module.exports = {
-  //  add, getQueue, getCurrentSong
-//};
 
 module.exports = PriorityQueue;
