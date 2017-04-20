@@ -48,21 +48,6 @@ module.exports = class TimezoneCommand extends commando.Command {
     var hourDifference;
     var nextDay = false;
     var prevDay =  false;
-    var used24hr = false;
-    var ampm = inputTime[1].slice(2);
-
-    if (!ampm) {
-      console.log('No ampm.');
-    } else {
-      ampm = ampm.toUpperCase();
-    }
-
-    if (inputTime.length > 5 && inputTime < 12) {
-      used24hr = true;
-      inputHours += 12;
-    }
-
-    console.log(used24hr);
 
     if (!firstZoneMinutes) {
       firstZoneMinutes = '0';
@@ -114,7 +99,7 @@ module.exports = class TimezoneCommand extends commando.Command {
     newMinutes = inputMinutes;
 
     if (firstZoneHour < secondZoneHour) {
-      hourDifference = Math.abs(firstZoneHour) - Math.abs(secondZoneHour);
+      hourDifference = secondZoneHour - firstZoneHour;
       newMinutes += secondZoneMinutes;
     }
     if (firstZoneHour > secondZoneHour) {
@@ -125,33 +110,26 @@ module.exports = class TimezoneCommand extends commando.Command {
 
     newHours = hourDifference + inputHours;
 
-    if (newHours >= 24) {
-      newHours = Math.abs(newHours - 24);
-      nextDay = true;
-    }
-    if (newHours < 0) {
-      newHours += 24;
-      prevDay = true;
-    }
     if (newMinutes < 0) {
       newMinutes = Math.abs(newMinutes);
     }
     if (newMinutes >= 60) {
       newMinutes -= 60;
+      newHours += 1;
     }
-    if (newMinutes < firstZoneMinutes) {
-      newHours -= 1;
-      newMinutes = 60 - newMinutes;
+    if (newHours >= 24) {
+      newHours = Math.abs(newHours - 24);
+      nextDay = true;
+    }
+    // if (newMinutes < firstZoneMinutes) {
+    //   newHours -= 1;
+    //   newMinutes = 60 - newMinutes;
+    // }
+    if (newHours < 0) {
+      newHours += 24;
+      prevDay = true;
     }
 
-    if (used24hr === false) {
-      if (newHours > 12) {
-        newHours -= 12;
-        ampm = 'PM';
-      } else {
-        ampm = 'AM';
-      }
-    }
 
     newHours = newHours.toString();
     newMinutes = newMinutes.toString();
@@ -172,19 +150,19 @@ module.exports = class TimezoneCommand extends commando.Command {
       const embed = new RichEmbed()
       .setColor(0x462fef)
       .addField(`Time in ${firstZone}: `, inputTime, true)
-      .addField(`Time in ${secondZone}: `, newTime + ampm + ' on the next day', true);
+      .addField(`Time in ${secondZone}: `, newTime + ' on the next day', true);
       msg.channel.sendEmbed(embed);
     } else if (prevDay === true) {
       const embed = new RichEmbed()
       .setColor(0x462fef)
       .addField(`Time in ${firstZone}: `, inputTime, true)
-      .addField(`Time in ${secondZone}: `, newTime + ampm + ' on the previous day', true);
+      .addField(`Time in ${secondZone}: `, newTime + ' on the previous day', true);
       msg.channel.sendEmbed(embed);
     } else {
       const embed = new RichEmbed()
       .setColor(0x462fef)
       .addField(`Time in ${firstZone}: `, inputTime, true)
-      .addField(`Time in ${secondZone}: `, newTime + ampm + ' on the same day', true);
+      .addField(`Time in ${secondZone}: `, newTime + ' on the same day', true);
       msg.channel.sendEmbed(embed);
     }
   }
