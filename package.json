@@ -2,15 +2,7 @@
   "name": "stevebot",
   "version": "1.0.0",
   "description": "",
-  "devDependencies": {
-    "flow-bin": "^0.41.0"
-  },
   "main": "index.js",
-  "scripts": {
-    "build": "flow-remove-types src/ -D lib/",
-    "prepublish": "npm run build",
-    "flow": "flow"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -19,8 +11,5 @@
     "node-opus": "^0.2.5",
     "request": "^2.81.0",
     "ytdl-core": "^0.10.4"
-  },
-  "devDependencies": {
-    "flow-remove-types": "^1.2.0"
   }
 }
