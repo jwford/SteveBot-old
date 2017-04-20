@@ -22,18 +22,18 @@ module.exports = class ServerInfoCommand extends commando.Command {
     var verificationLevel = msg.guild.verificationLevel;
 
     switch(verificationLevel) {
-      case 0:
-        verificationLevel = 'None';
-        break;
-      case 1:
-        verificationLevel = 'Low';
-        break;
-      case 2:
-        verificationLevel = 'Medium';
-        break;
-      case 3:
-        verificationLevel = 'Table Flip';
-        break;
+    case 0:
+      verificationLevel = 'None';
+      break;
+    case 1:
+      verificationLevel = 'Low';
+      break;
+    case 2:
+      verificationLevel = 'Medium';
+      break;
+    case 3:
+      verificationLevel = 'Table Flip';
+      break;
     }
 
     const embed = new discord.RichEmbed()

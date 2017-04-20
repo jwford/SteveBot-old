@@ -28,8 +28,8 @@ module.exports = class UnmuteCommand extends commando.Command {
     var muted = msg.guild.roles.find('name', 'Muted');
     var modlog = msg.guild.channels.find('name', 'modlog');
 
-    if (user.id == this.client.user.id) return modmin.sendMessage('Nice try. You cannot mute me in the first place, let alone *un*mute me.');
-    if (user.id == modmin.id) return modmin.sendMessage('Yeah... not able to mute yourself in the first place, bud. Try harder next time.');
+    if (user.id === this.client.user.id) return modmin.sendMessage('Nice try. You cannot mute me in the first place, let alone *un*mute me.');
+    if (user.id === modmin.id) return modmin.sendMessage('Yeah... not able to mute yourself in the first place, bud. Try harder next time.');
     if (!muted) return modmin.sendMessage(msg.guild.name + ' does not have a Muted role.');
     if (!msg.guild.member(user).roles.get(muted.id)) return modmin.sendMessage(`${user.username}#${user.discriminator} is not muted currently.`);
 
@@ -41,7 +41,7 @@ module.exports = class UnmuteCommand extends commando.Command {
     .setURL(`http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0x13c4be)
     .setTimestamp()
-    .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true)
+    .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true);
     modlog.sendEmbed(embed);
   }
 };
