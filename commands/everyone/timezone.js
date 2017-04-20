@@ -169,19 +169,19 @@ module.exports = class TimezoneCommand extends commando.Command {
     inputTime = inputTime.toUpperCase();
 
     if (nextDay === true) {
-       const embed = new RichEmbed()
+      const embed = new RichEmbed()
       .setColor(0x462fef)
       .addField(`Time in ${firstZone}: `, inputTime, true)
       .addField(`Time in ${secondZone}: `, newTime + ampm + ' on the next day', true);
       msg.channel.sendEmbed(embed);
     } else if (prevDay === true) {
-       const embed = new RichEmbed()
+      const embed = new RichEmbed()
       .setColor(0x462fef)
       .addField(`Time in ${firstZone}: `, inputTime, true)
       .addField(`Time in ${secondZone}: `, newTime + ampm + ' on the previous day', true);
       msg.channel.sendEmbed(embed);
     } else {
-       const embed = new RichEmbed()
+      const embed = new RichEmbed()
       .setColor(0x462fef)
       .addField(`Time in ${firstZone}: `, inputTime, true)
       .addField(`Time in ${secondZone}: `, newTime + ampm + ' on the same day', true);

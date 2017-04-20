@@ -1,5 +1,4 @@
 const commando = require('discord.js-commando');
-const discord = require('discord.js');
 const path = require('path');
 const stevebot = new commando.Client({
   owner: '273707798670344192',
@@ -20,6 +19,6 @@ stevebot.registry
 
 stevebot.login('Mjk3ODkwNzQyNzcxMjUzMjU4.C8HX5Q.L0hwHVfPxYsHrGKPgVVrug7Iu58');
 
-process.on("unhandledRejection", err => {
-  console.error("Uncaught Promise Error: \n" + err.stack);
+process.on('unhandledRejection', err => {
+  console.error('Uncaught Promise Error: \n' + err.stack);
 });

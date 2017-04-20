@@ -37,7 +37,7 @@ module.exports = class KickCommand extends commando.Command {
     var modlog = msg.guild.channels.find('name', 'modlog');
 
     if (!msg.guild.member(user).kickable) return modmin.sendMessage('This user is not kickable.');
-    if (user.id == modmin.id) return modmin.sendMessage('Silly, you can\'t kick yourself!');
+    if (user.id === modmin.id) return modmin.sendMessage('Silly, you can\'t kick yourself!');
 
     msg.guild.member(user).kick();
     user.sendMessage('You have been kicked from ' + msg.guild.name + '. Message an admin if you have a question.');

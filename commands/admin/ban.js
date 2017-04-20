@@ -37,7 +37,7 @@ module.exports = class BanCommand extends commando.Command {
     var modmin = msg.author;
     var modlog = msg.guild.channels.find('name', 'modlog');
 
-    if (user.id == admin.id) return msg.reply('Um...you can\'t ban yourself. Duh.');
+    if (user.id === admin.id) return msg.reply('Um...you can\'t ban yourself. Duh.');
     if (!msg.guild.member(user).bannable) return msg.reply('This user is not bannable.');
 
     msg.guild.member(user).ban(7);

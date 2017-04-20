@@ -11,22 +11,22 @@ module.exports = class UnbanCommand extends commando.Command {
       format: '[userid]',
       args: [
         {
-        key: 'userid',
-        label: 'User ID',
-        prompt: 'Enter the ID of the user to unban.',
-        type: 'string',
-        validate: userid => {
-          if (userid.length == 18) return true;
-          return 'User ID\'s must be 18 characters long.';
+          key: 'userid',
+          label: 'User ID',
+          prompt: 'Enter the ID of the user to unban.',
+          type: 'string',
+          validate: userid => {
+            if (userid.length === 18) return true;
+            return 'User ID\'s must be 18 characters long.';
+          }
+        },
+        {
+          key: 'reason',
+          label: 'reason',
+          prompt: 'Enter a reason for unbanning this user.',
+          type: 'string'
         }
-      },
-      {
-        key: 'reason',
-        label: 'reason',
-        prompt: 'Enter a reason for unbanning this user.',
-        type: 'string'
-      }
-    ]
+      ]
     });
   }
 
