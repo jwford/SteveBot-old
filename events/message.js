@@ -28,7 +28,7 @@ module.exports = msg => {
   }
 
   //reactions
-  var reactions = [/dftba/i, /thank you/i, /no edge/i, /pizza/i];
+  var reactions = [/dftba/i, /thank you/i, /no edge/i, /pizza/i, /brain soup/i];
 
   for (var r = 0; r < reactions.length; r++) {
     var react = reactions[r];
