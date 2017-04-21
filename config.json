@@ -1,7 +1,17 @@
 {
   "token": "Mjk3ODkwNzQyNzcxMjUzMjU4.C8HX5Q.L0hwHVfPxYsHrGKPgVVrug7Iu58",
+  "ownerID": [
+    "273707798670344192",
+    "102561906765619200"
+  ],
+  "mentionEveryoneDisabled": false,
+  "commandPrefix": "!",
   "blacklist": [
-    "test",
-    "test1"
+    "faggot",
+    "nigger",
+    "nigga",
+    "slut",
+    "cunt",
+    "retard"
   ]
 }
