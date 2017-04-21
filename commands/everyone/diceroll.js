@@ -11,7 +11,7 @@ module.exports = class DiceRollCommand extends commando.Command {
       format: '[number of sides]',
       args: [{
         key: 'sides',
-        label: 'sides',
+        label: 'number of sides',
         type: 'integer',
         prompt: 'Enter the number of sides the die should have.',
         default: '6'}]
