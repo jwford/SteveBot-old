@@ -1,4 +1,5 @@
 const commando = require('discord.js-commando');
+const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = class DiceRollCommand extends commando.Command {
   constructor(client) {
@@ -20,6 +21,9 @@ module.exports = class DiceRollCommand extends commando.Command {
   run(msg, args) {
     var sides = args.sides;
     var roll = Math.floor(Math.random() * sides) + 1;
-    msg.channel.sendMessage('You rolled a ' + roll + '. :game_die:');
+    const embed = new RichEmbed()
+    .setColor(0x2913ef)
+    .setTitle(`${msg.member.displayName}, you rolled a ${roll} :game_die:`);
+    msg.channel.sendEmbed(embed);
   }
 };
