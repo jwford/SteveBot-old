@@ -47,9 +47,13 @@
   "reacts": {
     "dftba": "dftba",
     "thank you": "yourewelcome",
+    "thanks": "yourewelcome",
     "no edge": "noedge",
     "pizza": "pizzajohn",
-    "brain soup": "brainsoup"
+    "brain soup": "brainsoup",
+    "french the llama": "ftl",
+    "mongols": "exception",
+    "exception": "exception"
   },
   "blacklist": [
     "faggot",
