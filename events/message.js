@@ -28,36 +28,17 @@ module.exports = msg => {
   }
 
   //reactions
-  var dftba = /dftba/i;
-  var thankyou = /thank you/i;
-  var noedge = /no edge/i;
-  var pizza = /pizza/i;
-  if (dftba.test(msg.content)) {
-    if (!msg.channel.guild.emojis.find('name', 'dftba')) {
-      return console.log('That emoji does not exist');
-    } else {
-      msg.react(msg.channel.guild.emojis.find('name', 'dftba'));
-    }
-  }
-  if (thankyou.test(msg.content)) {
-    if (!msg.channel.guild.emojis.find('name', 'yourewelcome')) {
-      return console.log('That emoji does not exist');
-    } else {
-      msg.react(msg.channel.guild.emojis.find('name', 'yourewelcome'));
-    }
-  }
-  if (noedge.test(msg.content)) {
-    if (!msg.channel.guild.emojis.find('name', 'noedge')) {
-      return console.log('That emoji does not exist.');
-    } else {
-      msg.react(msg.channel.guild.emojis.find('name', 'noedge'));
-    }
-  }
-  if (pizza.test(msg.content)) {
-    if (!msg.channel.guild.emojis.find('name', 'pizzajohn')) {
-      return console.log('That emoji does not exist.');
-    } else {
-      msg.react(msg.channel.guild.emojis.find('name', 'pizzajohn'));
+  var reactions = [/dftba/i, /thank you/i, /no edge/i, /pizza/i];
+
+  for (var r = 0; r < reactions.length; r++) {
+    var react = reactions[r];
+    if (react.test(msg.content)) {
+      react = react.toString().slice(1, -2);
+      if (msg.guild.emojis.find('name', config.reacts[react])) {
+        msg.react(msg.guild.emojis.find('name', config.reacts[react]));
+      } else {
+        console.log('That emoji doesn\'t exist.');
+      }
     }
   }
 };

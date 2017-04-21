@@ -6,6 +6,12 @@
   ],
   "mentionEveryoneDisabled": false,
   "commandPrefix": "!",
+  "reacts": {
+    "dftba": "dftba",
+    "thank you": "yourewelcome",
+    "no edge": "noedge",
+    "pizza": "pizzajohn"
+  },
   "blacklist": [
     "faggot",
     "nigger",
