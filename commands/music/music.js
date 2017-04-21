@@ -1,6 +1,8 @@
 const commando = require('discord.js-commando');
 const JukeBox = require("./JukeBox.js");
 
+const musicChannel = '🎵 music';
+
 class MusicCommand extends commando.Command {
 
   constructor(stevebot) {
@@ -13,7 +15,7 @@ class MusicCommand extends commando.Command {
   }
 
   run(message, args) {
-    var voiceChannel = message.guild.channels.find('name', '🎵 music');
+    var voiceChannel = message.guild.channels.find('name', musicChannel);
 
     JukeBox.startPlayer(voiceChannel);
 
