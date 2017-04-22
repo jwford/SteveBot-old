@@ -1,10 +1,10 @@
-const discord = require('discord.js');
+const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = channel => {
   var actionlog = channel.guild.channels.find('name', 'actionlog');
 
   if (!actionlog) return console.log('No actionlog channel.');
-  const embed = new discord.RichEmbed()
+  const embed = new RichEmbed()
   .setTitle('Channel Deleted | ' + `#${channel.name}`)
   .setColor(0x6518bc)
   .setTimestamp()

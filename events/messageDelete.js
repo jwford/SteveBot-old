@@ -1,9 +1,9 @@
-const discord = require('discord.js');
+const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = msg => {
   var actionlog = msg.guild.channels.find('name', 'actionlog');
   if (!actionlog) return console.log('No actionlog channel.');
-  const embed = new discord.RichEmbed()
+  const embed = new RichEmbed()
   .setTitle('Message Deleted | ' + `${msg.author.username}#${msg.author.discriminator}`)
   .setColor(0xd14927)
   .setTimestamp()
