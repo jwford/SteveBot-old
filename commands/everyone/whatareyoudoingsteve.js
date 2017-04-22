@@ -43,7 +43,8 @@ module.exports = class WhatAreYouDoingCommand extends commando.Command {
       'Do you want to show your Tuataria pride in public? YES! Then you should go to DFTBA.com and purchase yourself an It\'s a Tuatara shirt to showcase your pride!! Don\'t forget that 15% of the proceeds goes towards Project for Awesome! Nothing is better than that!! Buy your Tuatara shirt now!! http://tuataria.com/shirt',
       '<:charizardthismofo:304073296138338314> worldsuck!',
       ':arrow_up: :arrow_up: :arrow_down: :arrow_down: :arrow_left: :arrow_right: :arrow_left: :arrow_right: :b: :a:',
-      'Having an international dance party!'
+      'Having an international dance party!',
+      'Documenting the naughtiness.'
     ];
     var random = Math.floor(Math.random() * answers.length);
     msg.channel.sendMessage(answers[random]);
