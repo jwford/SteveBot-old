@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const discord = require('discord.js');
+const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = class ChannelInfoCommand extends commando.Command {
   constructor(stevebot) {
@@ -29,7 +29,7 @@ module.exports = class ChannelInfoCommand extends commando.Command {
       permissionOverwrites = 'None';
     }
 
-    const embed = new discord.RichEmbed()
+    const embed = new RichEmbed()
     .setTitle('Channel Information')
     .setColor(0x6518bc)
     .addField('Name:', channel.name, true)

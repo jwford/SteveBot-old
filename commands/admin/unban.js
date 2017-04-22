@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const discord = require('discord.js');
+const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = class UnbanCommand extends commando.Command {
   constructor(stevebot) {
@@ -48,7 +48,7 @@ module.exports = class UnbanCommand extends commando.Command {
     user.sendMessage('You have been unbanned from ' + msg.guild.name + '. Contact an admin if you have a question.');
 
     if (!modlog) return modmin.sendMessage('I can\'t find a modlog channel');
-    const embed = new discord.RichEmbed()
+    const embed = new RichEmbed()
     .setTitle('Unbanned | ' + `${user.username}#${user.discriminator}`)
     .setURL(`http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0xf91f1b)

@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const discord = require('discord.js');
+const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = class WhoIsCommand extends commando.Command {
   constructor(stevebot) {
@@ -48,7 +48,7 @@ module.exports = class WhoIsCommand extends commando.Command {
     }
 
 
-    const embed = new discord.RichEmbed()
+    const embed = new RichEmbed()
     .setTitle('User Information')
     .setThumbnail(user.displayAvatarURL)
     .setColor(0x26d1a9)

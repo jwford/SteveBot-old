@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const discord = require('discord.js');
+const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = class ServerInfoCommand extends commando.Command {
   constructor(stevebot) {
@@ -36,7 +36,7 @@ module.exports = class ServerInfoCommand extends commando.Command {
       break;
     }
 
-    const embed = new discord.RichEmbed()
+    const embed = new RichEmbed()
     .setTitle('Server Information')
     .setThumbnail(msg.guild.iconURL)
     .setURL('http://tuataria.com')

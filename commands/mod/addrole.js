@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const discord = require('discord.js');
+const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = class AddRoleCommand extends commando.Command {
   constructor(stevebot) {
@@ -43,7 +43,7 @@ module.exports = class AddRoleCommand extends commando.Command {
     msg.guild.member(user).addRole(role);
 
     if(!modlog) return modmin.sendMessage('I cannot find a modlog channel.');
-    const embed = new discord.RichEmbed()
+    const embed = new RichEmbed()
     .setTitle('Role Added | ' + `${user.username}#${user.discriminator}`)
     .setURL(`http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0xf9951b)

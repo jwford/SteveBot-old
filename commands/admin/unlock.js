@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const discord = require('discord.js');
+const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = class UnlockCommand extends commando.Command {
   constructor(stevebot) {
@@ -27,7 +27,7 @@ module.exports = class UnlockCommand extends commando.Command {
     .catch(console.error);
 
     if (!modlog) return console.log('No modlog channel.');
-    const embed = new discord.RichEmbed()
+    const embed = new RichEmbed()
     .setTitle('Channel Unlocked | ' + `${msg.channel.name}`)
     .setURL(`http://www.tuataria.com/tuataria/bios/#${admin.username.toLowerCase()}`)
     .setColor(0x6518bc)

@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const discord = require('discord.js');
+const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = class ListMembersInCommand extends commando.Command {
   constructor(stevebot) {
@@ -145,7 +145,7 @@ module.exports = class ListMembersInCommand extends commando.Command {
       users = 'No users in this role.';
     }
 
-    const embed = new discord.RichEmbed()
+    const embed = new RichEmbed()
     .setTitle('Role Information')
     .setColor(0x720909)
     .setTimestamp()

@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const discord = require('discord.js');
+const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = class KickCommand extends commando.Command {
   constructor(stevebot) {
@@ -43,7 +43,7 @@ module.exports = class KickCommand extends commando.Command {
     user.sendMessage('You have been kicked from ' + msg.guild.name + '. Message an admin if you have a question.');
 
     if(!modlog) return modmin.sendMessage('I cannot find a modlog channel.');
-    const embed = new discord.RichEmbed()
+    const embed = new RichEmbed()
     .setTitle('Kicked | ' + `${user.username}#${user.discriminator}`)
     .setURL(`http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0xe81ee1)
