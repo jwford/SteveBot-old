@@ -2,7 +2,7 @@ const commando = require('discord.js-commando');
 const path = require('path');
 const config = require('./config.json');
 const stevebot = new commando.Client({
-  owners: config.ownerID,
+  owner: config.ownerID,
   commandPrefix: config.commandPrefix,
   disableEveryone: config.mentionEveryoneDisabled,
 });
