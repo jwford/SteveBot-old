@@ -35,11 +35,11 @@ module.exports = class ConvertCommand extends commando.Command {
     var inputUnit = args.inputUnit;
     var outputUnit = args.outputUnit;
 
-    num = convert(num).from(inputUnit).to(outputUnit);
+    num = Math.round(convert(num).from(inputUnit).to(outputUnit));
 
     const embed = new RichEmbed()
     .setColor(0x0ad1b6)
-    .addField('Conversion: ', `${args.num}${inputUnit} is ${num}${outputUnit}`, true);
+    .addField('Conversion: ', `${args.num}${inputUnit} is about ${num}${outputUnit}`, true);
     msg.channel.sendEmbed(embed);
   }
 };
