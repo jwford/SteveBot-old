@@ -14,7 +14,7 @@ module.exports = class ConvertCommand extends commando.Command {
           key: 'num',
           label: 'value',
           prompt: 'What would you like to convert?',
-          type: 'string'
+          type: 'float',
         },
         {
           key: 'inputUnit',
@@ -23,23 +23,34 @@ module.exports = class ConvertCommand extends commando.Command {
         },
         {
           key: 'outputUnit',
-          prompt: 'What unit would you like to convert to?',
-          type: 'string'
+          prompt: 'What unit would you like to convert to? You can also say "possible" to get a list of possible units, or "best" to automatically convert to the smallest unit with a value greater than 1.',
+          type: 'string',
         }
       ]
     });
   }
 
   run(msg, args) {
-    var num = parseFloat(args.num);
+    var num = args.num;
     var inputUnit = args.inputUnit;
     var outputUnit = args.outputUnit;
+    var best = convert(num).from(inputUnit).toBest();
 
-    num = Math.round(convert(num).from(inputUnit).to(outputUnit));
-
-    const embed = new RichEmbed()
-    .setColor(0x0ad1b6)
-    .addField('Conversion: ', `${args.num}${inputUnit} is about ${num}${outputUnit}`, true);
-    msg.channel.sendEmbed(embed);
+    if (outputUnit === 'possible') {
+      const embed = new RichEmbed()
+      .setColor(0x4280f4)
+      .addField('Conversion Possibilities: ', `${num}${inputUnit} can be converted to ${convert().from(inputUnit).possibilities().join(', ')}`, true);
+      msg.channel.sendEmbed(embed);
+    } else if (outputUnit === 'best') {
+      const embed = new RichEmbed()
+      .setColor(0x4280f4)
+      .addField('Best Conversion: ', `${num}${inputUnit} is best converted to ${(Math.round(best.val * 10) / 10).toFixed(1)}${best.unit}`, true);
+      msg.channel.sendEmbed(embed);
+    } else {
+      const embed = new RichEmbed()
+      .setColor(0x4280f4)
+      .addField('Conversion: ', `${num}${inputUnit} converts to ${(Math.round(convert(num).from(inputUnit).to(outputUnit) * 10) / 10).toFixed(1)}${outputUnit}`);
+      msg.channel.sendEmbed(embed);
+    }
   }
 };
