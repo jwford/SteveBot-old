@@ -6,7 +6,8 @@ module.exports = member => {
   var user = member.user;
   if (!actionlog) return console.log('No actionlog channel.');
   const embed = new RichEmbed()
-  .setTitle('Member Left | ' + `${user.username}#${user.discriminator}`)
+  .setTitle('Member Left')
+  .setAuthor(`${user.username}#${user.discriminator}`, `${user.displayAvatarURL}`)
   .setColor(0x26d1a9)
   .setTimestamp()
   .setFooter('ID: ' + `${user.id}`);
