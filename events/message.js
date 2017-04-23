@@ -1,5 +1,6 @@
 const config = require('../config.json');
 module.exports = msg => {
+  if (msg.system === true) return msg.delete();
   var numMentions = msg.mentions.users.size;
   if (numMentions >= 15) {
     msg.delete();
