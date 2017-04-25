@@ -8,6 +8,7 @@ module.exports = stevebot => {
   stevebot.on('guildUpdate', reqEvent('guildUpdate'));
   stevebot.on('message', reqEvent('message'));
   stevebot.on('messageDelete', reqEvent('messageDelete'));
+  stevebot.on('messageUpdate', reqEvent('messageUpdate'));
   stevebot.on('ready', () => reqEvent('ready')(stevebot));
   stevebot.on('roleCreate', reqEvent('roleCreate'));
   stevebot.on('roleDelete', reqEvent('roleDelete'));
