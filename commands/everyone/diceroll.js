@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const RichEmbed = require('discord.js').RichEmbed;
 
-module.exports = class DiceRollCommand extends commando.Command {
+module.exports = class DiceRollCommand extends Command {
   constructor(client) {
     super(client, {
       name: 'roll',

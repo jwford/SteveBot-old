@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const RichEmbed = require('discord.js').RichEmbed;
 
-module.exports = class TimezoneCommand extends commando.Command {
+module.exports = class TimezoneCommand extends Command {
   constructor(stevebot) {
     super(stevebot, {
       name: 'timezone',

@@ -1,4 +1,4 @@
 module.exports = stevebot => {
   console.log('SteveBot is ready!');
-  stevebot.user.setGame('the shitbag');
+  stevebot.user.setGame('tuataria.com');
 };

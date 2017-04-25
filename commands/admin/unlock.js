@@ -1,7 +1,8 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const RichEmbed = require('discord.js').RichEmbed;
+const adminrole = require('../../config.json').admin_role_name;
 
-module.exports = class UnlockCommand extends commando.Command {
+module.exports = class UnlockCommand extends Command {
   constructor(stevebot) {
     super(stevebot, {
       name: 'unlock',
@@ -12,7 +13,7 @@ module.exports = class UnlockCommand extends commando.Command {
   }
 
   hasPermission(msg) {
-    return msg.member.hasPermission('ADMINISTRATOR');
+    return msg.member.roles.find('name', adminrole);
   }
 
   run(msg) {

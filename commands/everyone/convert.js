@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const RichEmbed = require('discord.js').RichEmbed;
 const convert = require('convert-units');
 
-module.exports = class ConvertCommand extends commando.Command {
+module.exports = class ConvertCommand extends Command {
   constructor(stevebot) {
     super(stevebot, {
       name: 'convert',

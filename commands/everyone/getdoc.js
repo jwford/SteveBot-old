@@ -1,8 +1,8 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const RichEmbed = require('discord.js').RichEmbed;
-const config = require('../../config.json');
+const docList = require('../../data.json').docs;
 
-module.exports = class GetDocCommand extends commando.Command {
+module.exports = class GetDocCommand extends Command {
   constructor(stevebot) {
     super(stevebot, {
       name: 'getdoc',
@@ -21,7 +21,7 @@ module.exports = class GetDocCommand extends commando.Command {
   }
 
   run(msg, args) {
-    var doc = config.docs[args.doc.toLowerCase()];
+    var doc = docList[args.doc.toLowerCase()];
 
     if(!doc) return msg.channel.sendMessage('Either I can\'t retrieve that doc (blame Enchilada or BoedJ), or it doesn\'t exist (blame yourself).');
 

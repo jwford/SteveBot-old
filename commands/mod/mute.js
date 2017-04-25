@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const RichEmbed = require('discord.js').RichEmbed;
 
-module.exports = class MuteCommand extends commando.Command {
+module.exports = class MuteCommand extends Command {
   constructor(stevebot) {
     super(stevebot, {
       name: 'mute',

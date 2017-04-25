@@ -1,11 +1,11 @@
-const config = require('../config.json');
+const data = require('../data.json');
 module.exports = msg => {
   //delete "x pinned a message...." messages
   if (msg.system === true) return msg.delete();
 
   //blacklist
-  for (var i = 0; i < config.blacklist.length; i++) {
-    var item = config.blacklist[i];
+  for (var i = 0; i < data.blacklist.length; i++) {
+    var item = data.blacklist[i];
     item = new RegExp(item, 'i');
     if (item.test(msg.content)) {
       if (msg.channel.name !== 'actionlog') {
@@ -40,8 +40,8 @@ module.exports = msg => {
     var react = reactions[r];
     if (react.test(msg.content)) {
       react = react.toString().slice(1, -2);
-      if (msg.guild.emojis.find('name', config.reacts[react])) {
-        msg.react(msg.guild.emojis.find('name', config.reacts[react]));
+      if (msg.guild.emojis.find('name', data.reacts[react])) {
+        msg.react(msg.guild.emojis.find('name', data.reacts[react]));
       } else {
         console.log('That emoji doesn\'t exist.');
       }

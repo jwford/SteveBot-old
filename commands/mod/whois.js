@@ -1,7 +1,7 @@
-const commando = require('discord.js-commando');
+const { Command } = require('discord.js-commando');
 const RichEmbed = require('discord.js').RichEmbed;
 
-module.exports = class WhoIsCommand extends commando.Command {
+module.exports = class WhoIsCommand extends Command {
   constructor(stevebot) {
     super(stevebot, {
       name: 'whois',
