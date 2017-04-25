@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const RichEmbed = require('discord.js').RichEmbed;
+const moment = require('moment');
 
 module.exports = class ServerInfoCommand extends Command {
   constructor(stevebot) {
@@ -19,8 +20,9 @@ module.exports = class ServerInfoCommand extends Command {
     var roles = msg.guild.roles.map(r => r.name).join(', ');
     roles = roles.slice(1);
 
-    var verificationLevel = msg.guild.verificationLevel;
+    var createdTime = moment(msg.guild.createdAt).format('ddd M-D-YY [at] h:mmA [GMT]ZZ');
 
+    var verificationLevel = msg.guild.verificationLevel;
     switch(verificationLevel) {
     case 0:
       verificationLevel = 'None';
@@ -58,7 +60,7 @@ module.exports = class ServerInfoCommand extends Command {
     .addField('Accessible:', msg.guild.available, true)
     .addField('Verification Level:', verificationLevel, true)
     .addField('Roles:', roles)
-    .addField('Created On:', msg.guild.createdAt, true);
+    .addField('Created On:', createdTime, true);
     msg.channel.sendEmbed(embed);
   }
 };

@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const RichEmbed = require('discord.js').RichEmbed;
+const moment = require('moment');
 
 module.exports = class ListMembersInCommand extends Command {
   constructor(stevebot) {
@@ -23,6 +24,7 @@ module.exports = class ListMembersInCommand extends Command {
 
   run(msg, args) {
     var role = args.role;
+    var createdTime = moment(role.createdAt).format('ddd M-D-YY [at] h:mmA [GMT]ZZ');
 
     if (!msg.channel.guild.roles.get(role.id)) return msg.reply('I can\'t find that role.');
     var users = role.members.map(u => u.user).join(', ');
@@ -158,7 +160,7 @@ module.exports = class ListMembersInCommand extends Command {
     .addField('Mentionable by Anyone:', role.mentionable, true)
     .addField('Displayed Seperately:', role.hoist, true)
     .addField('Editable by Steve:', role.editable, true)
-    .addField('Created:', role.createdAt, true)
+    .addField('Created:', createdTime, true)
     .addField('Permissions:', permissions, true)
     .addField('Users:', users, true);
     msg.channel.sendEmbed(embed);

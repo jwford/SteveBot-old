@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const RichEmbed = require('discord.js').RichEmbed;
+const moment = require('moment');
 
 module.exports = class ChannelInfoCommand extends Command {
   constructor(stevebot) {
@@ -24,6 +25,7 @@ module.exports = class ChannelInfoCommand extends Command {
   run(msg, args) {
     var channel = args.channel;
     var permissionOverwrites = channel.permissionOverwrites.size;
+    var createdTime = moment(channel.createdAt).format('ddd M-D-YY [at] h:mmA [GMT]ZZ');
 
     if (permissionOverwrites === 0) {
       permissionOverwrites = 'None';
@@ -38,7 +40,7 @@ module.exports = class ChannelInfoCommand extends Command {
     .addField('Server:', channel.guild.name, true)
     .addField('Position:', channel.position, true)
     .addField('Permission Overwrites:', permissionOverwrites, true)
-    .addField('Created on:', channel.createdAt, true)
+    .addField('Created on:', createdTime, true)
     .setTimestamp();
     msg.channel.sendEmbed(embed);
   }
