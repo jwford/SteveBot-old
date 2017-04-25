@@ -1,5 +1,4 @@
 const { Command } = require('discord.js-commando');
-const RichEmbed = require('discord.js').RichEmbed;
 const adminrole = require('../../config.json').admin_role_name;
 
 module.exports = class NicknameCommand extends Command {
@@ -34,17 +33,7 @@ module.exports = class NicknameCommand extends Command {
   run(msg, args) {
     var user = args.user;
     var newNickname = args.nickname;
-    var modlog = msg.guild.channels.find('name', 'modlog');
 
     msg.guild.member(user).setNickname(newNickname);
-
-    if(!modlog) return console.log('No modlog');
-    const embed = new RichEmbed()
-    .setTitle('User Nickname Changed')
-    .setColor(0x00f400)
-    .addField('User: ', `${user.username}#${user.discriminator}`, true)
-    .addField('Nickname: ', newNickname, true)
-    .setFooter('ID: ' + user.id);
-    modlog.sendEmbed(embed);
   }
 };
