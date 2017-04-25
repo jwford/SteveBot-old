@@ -2,6 +2,7 @@ const reqEvent = (event) => require(`../events/${event}`);
 module.exports = stevebot => {
   stevebot.on('channelCreate', reqEvent('channelCreate'));
   stevebot.on('channelDelete', reqEvent('channelDelete'));
+  stevebot.on('channelUpdate', reqEvent('channelUpdate'));
   stevebot.on('guildMemberAdd', reqEvent('guildMemberAdd'));
   stevebot.on('guildMemberRemove', reqEvent('guildMemberRemove'));
   stevebot.on('guildMemberUpdate', reqEvent('guildMemberUpdate'));
