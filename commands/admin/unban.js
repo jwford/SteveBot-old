@@ -51,10 +51,9 @@ module.exports = class UnbanCommand extends Command {
     if (!modlog) return modmin.sendMessage('I can\'t find a modlog channel');
     const embed = new RichEmbed()
     .setTitle('Unbanned | ' + `${user.username}#${user.discriminator}`)
-    .setURL(`http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
+    .setAuthor(`${modmin.username}#${modmin.discriminator}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0xf91f1b)
     .setTimestamp()
-    .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true)
     .addField('Reason:', reason, true);
     modlog.sendEmbed(embed);
   }

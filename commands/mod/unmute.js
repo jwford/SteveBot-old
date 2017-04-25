@@ -38,10 +38,9 @@ module.exports = class UnmuteCommand extends Command {
     if (!modlog) return modmin.sendMessage('I cannot find a modlog channel.');
     const embed = new RichEmbed()
     .setTitle('Unmute | ' + `${user.username}#${user.discriminator}`)
-    .setURL(`http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
+    .setAuthor(`${modmin.username}#${modmin.discriminator}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0x13c4be)
-    .setTimestamp()
-    .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true);
+    .setTimestamp();
     modlog.sendEmbed(embed);
   }
 };

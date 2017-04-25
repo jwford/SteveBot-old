@@ -35,11 +35,10 @@ module.exports = class PurgeMessagesCommand extends Command {
     if (!modlog) return console.log('No modlog.');
     const embed = new RichEmbed()
     .setTitle('Message Purge')
+    .setAuthor(`${admin.username}#${admin.discriminator}`, `${admin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${admin.username.toLowerCase()}`)
     .setColor(0xdddd21)
-    .setURL(`http://www.tuataria.com/tuataria/bios/#${admin.username.toLowerCase()}`)
     .addField('Channel: ', msg.channel.name, true)
-    .addField('Number of Messages: ', msgCount, true)
-    .addField('Admin: ', `${admin.username}#${admin.discriminator}`, true)
+    .addField('Number of Messages: ', msgCount - 1, true)
     .setTimestamp();
     modlog.sendEmbed(embed);
   }

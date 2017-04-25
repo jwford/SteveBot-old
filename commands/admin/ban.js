@@ -46,11 +46,10 @@ module.exports = class BanCommand extends Command {
     if(!modlog) return msg.reply('I can\'t find a modlog channel.');
     const embed = new RichEmbed()
     .setTitle('Banned | ' + `${user.username}#${user.discriminator}`)
-    .setURL(`http://www.tuataria.com/tuataria/bios/#${admin.username.toLowerCase()}`)
+    .setAuthor(`${modmin.username}#${modmin.discriminator}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0xf91f1b)
     .setTimestamp()
     .setFooter('ID: ' + user.id)
-    .addField('Modmin:', `${modmin.username}#${modmin.discriminator}`, true)
     .addField('Reason:', reason, true);
     modlog.sendEmbed(embed);
   }
