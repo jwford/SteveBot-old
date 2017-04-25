@@ -7,7 +7,6 @@ module.exports = (oldGuild, newGuild) => {
   if (oldGuild.name !== newGuild.name) {
     var newName = newGuild.name;
     if (newName === null) return console.log('New server name is null.');
-
     const embed = new RichEmbed()
     .setTitle('Server Name Changed')
     .setColor(0x6128ff)
@@ -53,7 +52,7 @@ module.exports = (oldGuild, newGuild) => {
     .setTimestamp();
     actionlog.sendEmbed(embed);
   }
-  
+
   //available
   if (oldGuild.available !== newGuild.available) {
     if (newGuild.available === false) return console.log('Server not available.');
