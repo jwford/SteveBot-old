@@ -42,8 +42,8 @@ module.exports = (oldChannel, newChannel) => {
     const embed = new RichEmbed()
     .setTitle('Channel Position Changed')
     .setColor(0x6518bc)
-    .addField('Old Position: ', oldChannel.position)
-    .addField('New Position: ', newChannel.position)
+    .addField('Old Position: ', oldChannel.position, true)
+    .addField('New Position: ', newChannel.position, true)
     .setFooter(`ID: ${newChannel.id}`)
     .setTimestamp();
     actionlog.sendEmbed(embed);
