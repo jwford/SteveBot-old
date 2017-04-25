@@ -1,5 +1,6 @@
 const { Command } = require('discord.js-commando');
 const RichEmbed = require('discord.js').RichEmbed;
+const moment = require('moment');
 
 module.exports = class WhoIsCommand extends Command {
   constructor(stevebot) {
@@ -47,6 +48,8 @@ module.exports = class WhoIsCommand extends Command {
       game = game.name;
     }
 
+    var createdTime = moment(user.createdAt).format('ddd M-D-YY [at] h:mmA [GMT]ZZ');
+    var joinedTime = moment(userAsMember.joinedAt).format('ddd M-D-YY [at] h:mmA [GMT]ZZ');
 
     const embed = new RichEmbed()
     .setTitle('User Information')
@@ -66,8 +69,8 @@ module.exports = class WhoIsCommand extends Command {
     .addField('Server-Deafened:', userAsMember.serverDeaf, true)
     .addField('Self-Deafened:', userSelfDeaf, true)
     .addField('Roles:', roles, true)
-    .addField('Account Created:', user.createdAt, true)
-    .addField(`Joined ${msg.guild.name}:`, userAsMember.joinedAt, true)
+    .addField('Account Created:', createdTime, true)
+    .addField(`Joined ${msg.guild.name}:`, joinedTime, true)
     .setTimestamp();
     msg.channel.sendEmbed(embed);
   }
