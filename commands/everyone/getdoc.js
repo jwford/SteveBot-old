@@ -21,8 +21,7 @@ module.exports = class GetDocCommand extends commando.Command {
   }
 
   run(msg, args) {
-    var requestedDoc = args.doc;
-    var doc = config.docs[requestedDoc.toLowerCase()];
+    var doc = config.docs[args.doc.toLowerCase()];
 
     if(!doc) return msg.channel.sendMessage('Either I can\'t retrieve that doc (blame Enchilada or BoedJ), or it doesn\'t exist (blame yourself).');
 
