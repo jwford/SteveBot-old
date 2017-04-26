@@ -11,14 +11,15 @@ module.exports = class MarkdownCommand extends Command {
         key: 'question',
         label: 'question',
         prompt: 'What do you want to know how to do?',
-        type: 'string'
+        type: 'string',
+        default: ''
       }]
     });
   }
 
   run(msg, args) {
     var query = args.question;
-
+    
     switch (query) {
     case 'italics':
       msg.channel.sendMessage('\`*italics*\`');
@@ -43,6 +44,9 @@ module.exports = class MarkdownCommand extends Command {
       break;
     case 'underline bold italics':
       msg.channel.sendMessage('\`__***underline bold italics***__\`');
+      break;
+    case '':
+      msg.channel.sendMessage('\`*italics*\` \n \n \`**bold**\` \n \n \`***bold italics***\` \n \n \`~~strikeout~~\` \n \n \`__underline__\` \n \n \`__*underline italics*__\` \n \n \`__**underline bold**__\` \n \n \`__***underline bold italics***__\` \n \n The code blocks are done with backticks. Single backtick on either side for a one line code block, three backticks for a multi-line code block.');
       break;
     default:
       msg.reply('that\'s not a markdown thing. Stop making typos before the Jonathans notice.');
