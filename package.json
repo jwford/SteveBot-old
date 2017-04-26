@@ -9,8 +9,6 @@
     "convert-units": "^2.2.0",
     "discord.js": "github:hydrabolt/discord.js",
     "discord.js-commando": "github:gawdl3y/discord.js-commando",
-    "lodash.foreach": "^4.5.0",
-    "lodash.keys": "^4.2.0",
     "moment": "^2.18.1",
     "moment-timezone": "^0.5.13",
     "node-opus": "^0.2.5",
