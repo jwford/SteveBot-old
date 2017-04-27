@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 
-module.exports = class HamiltonRefernceCommand extends Command {
+module.exports = class HamiltonReferenceCommand extends Command {
   constructor(stevebot) {
     super(stevebot, {
       name: 'hamiltonreference',
