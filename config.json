@@ -7,5 +7,6 @@
   "disableEveryone": true,
   "commandPrefix": "!",
   "admin_role_name": "admin",
-  "mod_role_name": "channel mod"
+  "mod_role_name": "channel mod",
+  "game": "he's in alpha"
 }
