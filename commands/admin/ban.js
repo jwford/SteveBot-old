@@ -51,6 +51,6 @@ module.exports = class BanCommand extends Command {
     .setTimestamp()
     .setFooter('ID: ' + user.id)
     .addField('Reason:', reason, true);
-    modlog.sendEmbed(embed);
+    modlog.send({embed});
   }
 };

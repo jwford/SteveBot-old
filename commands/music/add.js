@@ -25,7 +25,7 @@ class AddCommand extends commando.Command {
     JukeBox.getPlayer().addSong(link);
 
     ytdl.getInfo(link, function(err, info) {
-      message.channel.sendMessage("Added " + info.title);
+      message.channel.send("Added " + info.title);
     });
   }
 }

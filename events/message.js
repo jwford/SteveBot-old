@@ -27,7 +27,7 @@ module.exports = msg => {
 
   //deletes errant @everyone and @here
   if (msg.content.includes('@everyone') || msg.content.includes('@here')) {
-    if (!msg.member.hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) {
+    if (!msg.member.hasPermission('MANAGE_ROLES')) {
       msg.delete();
       msg.reply('I\'m trying to eat eucalyptus in peace, so please stop mentioning everyone.');
     }

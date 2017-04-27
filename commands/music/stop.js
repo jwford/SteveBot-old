@@ -15,7 +15,7 @@ class StopCommand extends commando.Command {
 
   run(message, args) {
     JukeBox.stopPlayer();
-    message.channel.sendMessage("Stopped the current song and cleared the queue.");
+    message.channel.send("Stopped the current song and cleared the queue.");
   }
 }
 

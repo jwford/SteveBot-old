@@ -151,19 +151,19 @@ module.exports = class TimezoneCommand extends Command {
       .setColor(0x462fef)
       .addField(`Time in ${firstZone}: `, inputTime, true)
       .addField(`Time in ${secondZone}: `, newTime + ' on the next day', true);
-      msg.channel.sendEmbed(embed);
+      msg.channel.send({embed});
     } else if (prevDay === true) {
       const embed = new RichEmbed()
       .setColor(0x462fef)
       .addField(`Time in ${firstZone}: `, inputTime, true)
       .addField(`Time in ${secondZone}: `, newTime + ' on the previous day', true);
-      msg.channel.sendEmbed(embed);
+      msg.channel.send({embed});
     } else {
       const embed = new RichEmbed()
       .setColor(0x462fef)
       .addField(`Time in ${firstZone}: `, inputTime, true)
       .addField(`Time in ${secondZone}: `, newTime + ' on the same day', true);
-      msg.channel.sendEmbed(embed);
+      msg.channel.send({embed});
     }
   }
 };

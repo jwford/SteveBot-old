@@ -19,6 +19,6 @@ module.exports = (oldMember, newMember) => {
     .addField('User: ', `${user.username}#${user.discriminator}`, true)
     .addField('Nickname: ', newNickname, true)
     .setFooter('ID: ' + user.id);
-    actionlog.sendEmbed(embed);
+    actionlog.send({embed});
   }
 };

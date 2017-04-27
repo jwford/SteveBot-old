@@ -23,11 +23,11 @@ module.exports = class GetDocCommand extends Command {
   run(msg, args) {
     var doc = docList[args.doc.toLowerCase()];
 
-    if(!doc) return msg.channel.sendMessage('Either I can\'t retrieve that doc (blame Enchilada or BoedJ), or it doesn\'t exist (blame yourself).');
+    if(!doc) return msg.channel.send('Either I can\'t retrieve that doc (blame Enchilada or BoedJ), or it doesn\'t exist (blame yourself).');
 
     const embed = new RichEmbed()
     .setColor(0xef7300)
     .addField(`Here's your doc, ${msg.member.displayName}`, '<' + doc + '>', true);
-    msg.channel.sendEmbed(embed);
+    msg.channel.send({embed});
   }
 };

@@ -11,5 +11,5 @@ module.exports = member => {
   .setColor(0x26d1a9)
   .setTimestamp()
   .setFooter('ID: ' + `${user.id}`);
-  actionlog.sendEmbed(embed);
+  actionlog.send({embed});
 };

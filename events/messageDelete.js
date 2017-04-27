@@ -12,5 +12,5 @@ module.exports = msg => {
   .setTimestamp()
   .addField('Content:',  msg.content)
   .addField('Message Sent on:', sentTime);
-  actionlog.sendEmbed(embed);
+  actionlog.send({embed});
 };

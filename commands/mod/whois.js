@@ -19,7 +19,7 @@ module.exports = class WhoIsCommand extends Command {
   }
 
   hasPermission(msg) {
-    return msg.member.hasPermission('MANAGE_ROLES_OR_PERMISSIONS');
+    return msg.member.hasPermission('MANAGE_ROLES');
   }
 
   run(msg, args) {
@@ -72,6 +72,6 @@ module.exports = class WhoIsCommand extends Command {
     .addField('Account Created:', createdTime, true)
     .addField(`Joined ${msg.guild.name}:`, joinedTime, true)
     .setTimestamp();
-    msg.channel.sendEmbed(embed);
+    msg.channel.send({embed});
   }
 };

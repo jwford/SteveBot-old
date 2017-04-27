@@ -21,7 +21,7 @@ class MusicCommand extends commando.Command {
 
     JukeBox.getPlayer().joinVoiceChannel();
 
-    message.channel.sendMessage("Joined " + voiceChannel + ". Ready to play!");
+    message.channel.send("Joined " + voiceChannel + ". Ready to play!");
     console.log("Ready to play... ");
   }
 }

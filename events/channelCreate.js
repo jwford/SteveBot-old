@@ -9,5 +9,5 @@ module.exports = channel => {
   .setColor(0x6518bc)
   .setTimestamp()
   .setFooter('ID: ' + `${channel.id}`);
-  actionlog.sendEmbed(embed);
+  actionlog.send({embed});
 };

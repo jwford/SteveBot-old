@@ -19,7 +19,7 @@ module.exports = class ListMembersInCommand extends Command {
   }
 
   hasPermission(msg) {
-    return msg.member.hasPermission('MANAGE_ROLES_OR_PERMISSIONS');
+    return msg.member.hasPermission('MANAGE_ROLES');
   }
 
   run(msg, args) {
@@ -127,7 +127,7 @@ module.exports = class ListMembersInCommand extends Command {
       newPermission = 'Manage Nicknames, ';
       permissions = permissions + newPermission;
     }
-    if (role.hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) {
+    if (role.hasPermission('MANAGE_ROLES')) {
       newPermission = 'Manage Roles and Permissions, ';
       permissions = permissions + newPermission;
     }
@@ -163,6 +163,6 @@ module.exports = class ListMembersInCommand extends Command {
     .addField('Created:', createdTime, true)
     .addField('Permissions:', permissions, true)
     .addField('Users:', users, true);
-    msg.channel.sendEmbed(embed);
+    msg.channel.send({embed});
   }
 };

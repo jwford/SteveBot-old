@@ -28,7 +28,7 @@ module.exports = class RemoveRoleCommand extends Command {
   }
 
   hasPermission(msg) {
-    return msg.member.hasPermission('MANAGE_ROLES_OR_PERMISSIONS');
+    return msg.member.hasPermission('MANAGE_ROLES');
   }
 
   run(msg, args) {
@@ -37,18 +37,18 @@ module.exports = class RemoveRoleCommand extends Command {
     var role = args.role;
     var modlog = msg.guild.channels.find('name', 'modlog');
 
-    if (!msg.guild.member(user).roles.get(role.id)) return modmin.sendMessage(`${user.username}#${user.discriminator} does not have that role.`);
-    if (msg.guild.member(modmin).highestRole.comparePositionTo(role) < 0) return modmin.sendMessage('You cannot remove the role from that user');
+    if (!msg.guild.member(user).roles.get(role.id)) return modmin.send(`${user.username}#${user.discriminator} does not have that role.`);
+    if (msg.guild.member(modmin).highestRole.comparePositionTo(role) < 0) return modmin.send('You cannot remove the role from that user');
 
     msg.guild.member(user).removeRole(role);
 
-    if(!modlog) return modmin.sendMessage('I cannot find a modlog channel.');
+    if(!modlog) return modmin.send('I cannot find a modlog channel.');
     const embed = new RichEmbed()
     .setTitle('Role Removed | ' + `${user.username}#${user.discriminator}`)
     .setAuthor(`${modmin.username}#${modmin.discriminator}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0xf9951b)
     .setTimestamp()
     .addField('Role:', role, true);
-    modlog.sendEmbed(embed);
+    modlog.send({embed});
   }
 };

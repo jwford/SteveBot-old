@@ -14,7 +14,7 @@ class SkipCommand extends commando.Command {
 
   run(message, args) {
     let skippedSong = JukeBox.getPlayer().skip();
-    message.channel.sendMessage("Skipped " + skippedSong);
+    message.channel.send("Skipped " + skippedSong);
   }
 }
 

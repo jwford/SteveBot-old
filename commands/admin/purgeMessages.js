@@ -40,6 +40,6 @@ module.exports = class PurgeMessagesCommand extends Command {
     .addField('Channel: ', msg.channel.name, true)
     .addField('Number of Messages: ', msgCount - 1, true)
     .setTimestamp();
-    modlog.sendEmbed(embed);
+    modlog.send({embed});
   }
 };

@@ -22,31 +22,31 @@ module.exports = class MarkdownCommand extends Command {
 
     switch (query) {
     case 'italics':
-      msg.channel.sendMessage('\`*italics*\`');
+      msg.channel.send('\`*italics*\`');
       break;
     case 'bold':
-      msg.channel.sendMessage('\`**bold**\`');
+      msg.channel.send('\`**bold**\`');
       break;
     case 'bold italics':
-      msg.channel.sendMessage('\`***bold italics***\`');
+      msg.channel.send('\`***bold italics***\`');
       break;
     case 'strikeout':
-      msg.channel.sendMessage('\`~~strikeout~~\`');
+      msg.channel.send('\`~~strikeout~~\`');
       break;
     case 'underline':
-      msg.channel.sendMessage('\`__underline__\`');
+      msg.channel.send('\`__underline__\`');
       break;
     case 'underline italics':
-      msg.channel.sendMessage('\`__*underline italics*__\`');
+      msg.channel.send('\`__*underline italics*__\`');
       break;
     case 'underline bold':
-      msg.channel.sendMessage('\`__**underline bold**__\`');
+      msg.channel.send('\`__**underline bold**__\`');
       break;
     case 'underline bold italics':
-      msg.channel.sendMessage('\`__***underline bold italics***__\`');
+      msg.channel.send('\`__***underline bold italics***__\`');
       break;
     case '':
-      msg.channel.sendMessage('\`\`\`fix\n *italics* \n \n **bold** \n \n ***bold italics*** \n \n ~~strikeout~~ \n \n __underline__ \n \n __*underline italics*__ \n \n __**underline bold**__ \n \n __***underline bold italics***__ \n \n The code blocks are done with backticks. Single backtick on either side for a one line code block, three backticks for a multi-line code block.\`\`\`');
+      msg.channel.send('\`\`\`fix\n *italics* \n \n **bold** \n \n ***bold italics*** \n \n ~~strikeout~~ \n \n __underline__ \n \n __*underline italics*__ \n \n __**underline bold**__ \n \n __***underline bold italics***__ \n \n The code blocks are done with backticks. Single backtick on either side for a one line code block, three backticks for a multi-line code block.\`\`\`');
       break;
     default:
       msg.reply('that\'s not a markdown thing. Stop making typos before the Jonathans notice.');

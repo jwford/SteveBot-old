@@ -34,7 +34,7 @@ class QueueCommand extends commando.Command {
     let embed = new discord.RichEmbed()
     .setColor(0x4b42f4)
     .addField('Currently queued:', titleList, true);
-    channel.sendEmbed(embed);
+    channel.send({embed});
 
   }
 }

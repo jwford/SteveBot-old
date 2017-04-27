@@ -24,7 +24,7 @@ module.exports = class UnlockCommand extends Command {
     msg.channel.overwritePermissions(guild, {
       SEND_MESSAGES: true
     })
-    .then(() => msg.channel.sendMessage('This channel has been unlocked.'))
+    .then(() => msg.channel.send('This channel has been unlocked.'))
     .catch(console.error);
 
     if (!modlog) return console.log('No modlog channel.');
@@ -34,6 +34,6 @@ module.exports = class UnlockCommand extends Command {
     .setColor(0x6518bc)
     .setTimestamp()
     .setFooter('ID: ' + msg.channel.id);
-    modlog.sendEmbed(embed);
+    modlog.send({embed});
   }
 };

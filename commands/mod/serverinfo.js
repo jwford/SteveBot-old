@@ -13,7 +13,7 @@ module.exports = class ServerInfoCommand extends Command {
   }
 
   hasPermission(msg) {
-    return msg.member.hasPermission('MANAGE_ROLES_OR_PERMISSIONS');
+    return msg.member.hasPermission('MANAGE_ROLES');
   }
 
   run(msg) {
@@ -61,6 +61,6 @@ module.exports = class ServerInfoCommand extends Command {
     .addField('Verification Level:', verificationLevel, true)
     .addField('Roles:', roles)
     .addField('Created On:', createdTime, true);
-    msg.channel.sendEmbed(embed);
+    msg.channel.send({embed});
   }
 };

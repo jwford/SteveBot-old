@@ -19,7 +19,7 @@ module.exports = class ChannelInfoCommand extends Command {
   }
 
   hasPermission(msg) {
-    return msg.member.hasPermission('MANAGE_ROLES_OR_PERMISSIONS');
+    return msg.member.hasPermission('MANAGE_ROLES');
   }
 
   run(msg, args) {
@@ -42,6 +42,6 @@ module.exports = class ChannelInfoCommand extends Command {
     .addField('Permission Overwrites:', permissionOverwrites, true)
     .addField('Created on:', createdTime, true)
     .setTimestamp();
-    msg.channel.sendEmbed(embed);
+    msg.channel.send({embed});
   }
 };

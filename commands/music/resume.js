@@ -15,7 +15,7 @@ class ResumeCommand extends commando.Command {
 
   run(message, args) {
     JukeBox.getPlayer().getPlayerDispatcher().resume();
-    message.channel.sendMessage("Resumed playing the current song.");
+    message.channel.send("Resumed playing the current song.");
   }
 }
 

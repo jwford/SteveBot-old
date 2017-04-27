@@ -25,7 +25,7 @@ module.exports = class LockdownCommand extends Command {
     msg.channel.overwritePermissions(guild, {
       SEND_MESSAGES: false
     })
-    .then(() => msg.channel.sendMessage('This channel has been locked down.'))
+    .then(() => msg.channel.send('This channel has been locked down.'))
     .catch(console.error);
 
     if (!modlog) return console.log('No modlog channel.');
@@ -35,6 +35,6 @@ module.exports = class LockdownCommand extends Command {
     .setColor(0x6518bc)
     .setTimestamp()
     .setFooter('ID: ' + msg.channel.id);
-    modlog.sendEmbed(embed);
+    modlog.send({embed});
   }
 };

@@ -40,17 +40,17 @@ module.exports = class ConvertCommand extends Command {
       const embed = new RichEmbed()
       .setColor(0x4280f4)
       .addField('Conversion Possibilities: ', `${num}${inputUnit} can be converted to ${convert().from(inputUnit).possibilities().join(', ')}`, true);
-      msg.channel.sendEmbed(embed);
+      msg.channel.send({embed});
     } else if (outputUnit === 'best') {
       const embed = new RichEmbed()
       .setColor(0x4280f4)
       .addField('Best Conversion: ', `${num}${inputUnit} is best converted to ${(Math.round(best.val * 10) / 10).toFixed(1)}${best.unit}`, true);
-      msg.channel.sendEmbed(embed);
+      msg.channel.send({embed});
     } else {
       const embed = new RichEmbed()
       .setColor(0x4280f4)
       .addField('Conversion: ', `${num}${inputUnit} converts to ${(Math.round(convert(num).from(inputUnit).to(outputUnit) * 10) / 10).toFixed(1)}${outputUnit}`);
-      msg.channel.sendEmbed(embed);
+      msg.channel.send({embed});
     }
   }
 };

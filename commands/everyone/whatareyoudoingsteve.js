@@ -47,6 +47,6 @@ module.exports = class WhatAreYouDoingCommand extends Command {
       'Documenting the naughtiness.'
     ];
     var random = Math.floor(Math.random() * answers.length);
-    msg.channel.sendMessage(answers[random]);
+    msg.channel.send(answers[random]);
   }
 };

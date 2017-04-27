@@ -16,6 +16,6 @@ module.exports = class HamiltonReferenceCommand extends Command {
   }
 
   run(msg) {
-    msg.channel.sendMessage('https://cdn.discordapp.com/attachments/273689397675687940/302961990144360448/hamilrefminutes.jpg');
+    msg.channel.send('https://cdn.discordapp.com/attachments/273689397675687940/302961990144360448/hamilrefminutes.jpg');
   }
 };

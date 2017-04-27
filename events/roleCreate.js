@@ -8,5 +8,5 @@ module.exports = role => {
   .setColor(0x720909)
   .setTimestamp()
   .setFooter('ID: ' + `${role.id}`);
-  actionlog.sendEmbed(embed);
+  actionlog.send({embed});
 };

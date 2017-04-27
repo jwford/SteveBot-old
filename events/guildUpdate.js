@@ -14,7 +14,7 @@ module.exports = (oldGuild, newGuild) => {
     .addField('New Name: ', newName, true)
     .setFooter(`ID: ${newGuild.id}`)
     .setTimestamp();
-    actionlog.sendEmbed(embed);
+    actionlog.send({embed});
   }
 
   //verification level
@@ -26,7 +26,7 @@ module.exports = (oldGuild, newGuild) => {
     .addField('New Level: ', newGuild.verificationLevel, true)
     .setFooter(`ID: ${newGuild.id}`)
     .setTimestamp();
-    actionlog.sendEmbed(embed);
+    actionlog.send({embed});
   }
 
   //region
@@ -38,7 +38,7 @@ module.exports = (oldGuild, newGuild) => {
     .addField('New Region: ', newGuild.region, true)
     .setFooter(`ID: ${newGuild.id}`)
     .setTimestamp();
-    actionlog.sendEmbed(embed);
+    actionlog.send({embed});
   }
 
   //owner
@@ -50,7 +50,7 @@ module.exports = (oldGuild, newGuild) => {
     .addField('New Region: ', newGuild.owner, true)
     .setFooter(`ID: ${newGuild.id}`)
     .setTimestamp();
-    actionlog.sendEmbed(embed);
+    actionlog.send({embed});
   }
 
   //available

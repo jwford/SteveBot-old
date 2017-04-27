@@ -24,6 +24,6 @@ module.exports = class DiceRollCommand extends Command {
     const embed = new RichEmbed()
     .setColor(0x2913ef)
     .setTitle(`${msg.member.displayName}, you rolled a ${roll} :game_die:`);
-    msg.channel.sendEmbed(embed);
+    msg.channel.send({embed});
   }
 };

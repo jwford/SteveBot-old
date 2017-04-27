@@ -15,7 +15,7 @@ class PauseCommand extends commando.Command {
 
   run(message, args) {
     JukeBox.getPlayer().getPlayerDispatcher().pause();
-    message.channel.sendMessage("Paused the current song.");
+    message.channel.send("Paused the current song.");
   }
 }
 

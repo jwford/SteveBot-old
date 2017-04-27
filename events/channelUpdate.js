@@ -13,7 +13,7 @@ module.exports = (oldChannel, newChannel) => {
     .addField('New Name: ', newChannel.name, true)
     .setFooter(`ID: ${newChannel.id}`)
     .setTimestamp();
-    actionlog.sendEmbed(embed);
+    actionlog.send({embed});
   }
 
   //topic
@@ -34,7 +34,7 @@ module.exports = (oldChannel, newChannel) => {
     .addField('New Topic: ', newTopic)
     .setFooter(`ID: ${newChannel.id}`)
     .setTimestamp();
-    actionlog.sendEmbed(embed);
+    actionlog.send({embed});
   }
 
   //position
@@ -46,6 +46,6 @@ module.exports = (oldChannel, newChannel) => {
     .addField('New Position: ', newChannel.position, true)
     .setFooter(`ID: ${newChannel.id}`)
     .setTimestamp();
-    actionlog.sendEmbed(embed);
+    actionlog.send({embed});
   }
 };

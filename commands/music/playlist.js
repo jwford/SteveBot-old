@@ -28,10 +28,10 @@ class PlaylistCommand extends commando.Command {
     JukeBox.getPlayer().addPlaylist(link);
 
     ytdl.getInfo(link, function(err, info) {
-      message.channel.sendMessage("Added playlist. Don't expect me to play the next song, though. I'm a lazy shitbag after all.");
+      message.channel.send("Added playlist. Don't expect me to play the next song, though. I'm a lazy shitbag after all.");
     });
 
-    //message.channel.sendMessage("Currently in queue: " + "<" + JukeBox.getPlayer().getQueue().getQueue().toString() + ">");
+    //message.channel.send("Currently in queue: " + "<" + JukeBox.getPlayer().getQueue().getQueue().toString() + ">");
   }
 }
 
