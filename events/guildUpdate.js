@@ -1,8 +1,8 @@
 const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = (oldGuild, newGuild) => {
-  var actionlog = newGuild.channels.find('name', 'actionlog');
-  if (!actionlog) return console.log('No actionlog.');
+  var steveactionlog = newGuild.channels.find('name', 'steveactionlog');
+  if (!steveactionlog) return console.log('No steveactionlog.');
   //name change
   if (oldGuild.name !== newGuild.name) {
     var newName = newGuild.name;
@@ -14,7 +14,7 @@ module.exports = (oldGuild, newGuild) => {
     .addField('New Name: ', newName, true)
     .setFooter(`ID: ${newGuild.id}`)
     .setTimestamp();
-    actionlog.send({embed});
+    steveactionlog.send({embed});
   }
 
   //verification level
@@ -26,7 +26,7 @@ module.exports = (oldGuild, newGuild) => {
     .addField('New Level: ', newGuild.verificationLevel, true)
     .setFooter(`ID: ${newGuild.id}`)
     .setTimestamp();
-    actionlog.send({embed});
+    steveactionlog.send({embed});
   }
 
   //region
@@ -38,7 +38,7 @@ module.exports = (oldGuild, newGuild) => {
     .addField('New Region: ', newGuild.region, true)
     .setFooter(`ID: ${newGuild.id}`)
     .setTimestamp();
-    actionlog.send({embed});
+    steveactionlog.send({embed});
   }
 
   //owner
@@ -50,7 +50,7 @@ module.exports = (oldGuild, newGuild) => {
     .addField('New Region: ', newGuild.owner, true)
     .setFooter(`ID: ${newGuild.id}`)
     .setTimestamp();
-    actionlog.send({embed});
+    steveactionlog.send({embed});
   }
 
   //available

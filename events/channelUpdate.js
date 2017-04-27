@@ -1,8 +1,8 @@
 const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = (oldChannel, newChannel) => {
-  var actionlog = newChannel.guild.channels.find('name', 'actionlog');
-  if (!actionlog) return console.log('No actionlog.');
+  var steveactionlog = newChannel.guild.channels.find('name', 'steveactionlog');
+  if (!steveactionlog) return console.log('No steveactionlog.');
 
   //name
   if (oldChannel.name !== newChannel.name) {
@@ -13,7 +13,7 @@ module.exports = (oldChannel, newChannel) => {
     .addField('New Name: ', newChannel.name, true)
     .setFooter(`ID: ${newChannel.id}`)
     .setTimestamp();
-    actionlog.send({embed});
+    steveactionlog.send({embed});
   }
 
   //topic
@@ -34,7 +34,7 @@ module.exports = (oldChannel, newChannel) => {
     .addField('New Topic: ', newTopic)
     .setFooter(`ID: ${newChannel.id}`)
     .setTimestamp();
-    actionlog.send({embed});
+    steveactionlog.send({embed});
   }
 
   //position
@@ -46,6 +46,6 @@ module.exports = (oldChannel, newChannel) => {
     .addField('New Position: ', newChannel.position, true)
     .setFooter(`ID: ${newChannel.id}`)
     .setTimestamp();
-    actionlog.send({embed});
+    steveactionlog.send({embed});
   }
 };

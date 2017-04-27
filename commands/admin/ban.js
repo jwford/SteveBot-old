@@ -36,14 +36,14 @@ module.exports = class BanCommand extends Command {
     var admin = msg.author;
     var reason = args.reason;
     var modmin = msg.author;
-    var modlog = msg.guild.channels.find('name', 'modlog');
+    var stevemodlog = msg.guild.channels.find('name', 'stevemodlog');
 
     if (user.id === admin.id) return msg.reply('Um...you can\'t ban yourself. Duh.');
     if (!msg.guild.member(user).bannable) return msg.reply('This user is not bannable.');
 
     msg.guild.member(user).ban(7);
 
-    if(!modlog) return msg.reply('I can\'t find a modlog channel.');
+    if(!stevemodlog) return msg.reply('I can\'t find a stevemodlog channel.');
     const embed = new RichEmbed()
     .setTitle('Banned | ' + `${user.username}#${user.discriminator}`)
     .setAuthor(`${modmin.username}#${modmin.discriminator}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
@@ -51,6 +51,6 @@ module.exports = class BanCommand extends Command {
     .setTimestamp()
     .setFooter('ID: ' + user.id)
     .addField('Reason:', reason, true);
-    modlog.send({embed});
+    stevemodlog.send({embed});
   }
 };

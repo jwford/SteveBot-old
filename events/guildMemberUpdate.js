@@ -2,7 +2,7 @@ const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = (oldMember, newMember) => {
   var user = newMember.user;
-  var actionlog = newMember.guild.channels.find('name', 'actionlog');
+  var steveactionlog = newMember.guild.channels.find('name', 'steveactionlog');
 
   //nickname
   if (oldMember.nickname !== newMember.nickname) {
@@ -12,13 +12,13 @@ module.exports = (oldMember, newMember) => {
       newNickname = newMember.displayName;
     }
 
-    if(!actionlog) return console.log('No actionlog.');
+    if(!steveactionlog) return console.log('No steveactionlog.');
     const embed = new RichEmbed()
     .setTitle('User Nickname Changed')
     .setColor(0x00f400)
     .addField('User: ', `${user.username}#${user.discriminator}`, true)
     .addField('Nickname: ', newNickname, true)
     .setFooter('ID: ' + user.id);
-    actionlog.send({embed});
+    steveactionlog.send({embed});
   }
 };

@@ -1,12 +1,12 @@
 const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = role => {
-  var actionlog = role.guild.channels.find('name', 'actionlog');
-  if (!actionlog) return console.log('No actionlog channel');
+  var steveactionlog = role.guild.channels.find('name', 'steveactionlog');
+  if (!steveactionlog) return console.log('No steveactionlog channel');
   const embed = new RichEmbed()
   .setTitle('Role Created | ' + `${role.name}`)
   .setColor(0x720909)
   .setTimestamp()
   .setFooter('ID: ' + `${role.id}`);
-  actionlog.send({embed});
+  steveactionlog.send({embed});
 };

@@ -26,7 +26,7 @@ module.exports = class UnmuteCommand extends Command {
     var user = args.user;
     var modmin = msg.author;
     var muted = msg.guild.roles.find('name', 'Muted');
-    var modlog = msg.guild.channels.find('name', 'modlog');
+    var stevemodlog = msg.guild.channels.find('name', 'stevemodlog');
 
     if (user.id === this.client.user.id) return modmin.send('Nice try. You cannot mute me in the first place, let alone *un*mute me.');
     if (user.id === modmin.id) return modmin.send('Yeah... not able to mute yourself in the first place, bud. Try harder next time.');
@@ -35,12 +35,12 @@ module.exports = class UnmuteCommand extends Command {
 
     msg.guild.member(user).removeRole(muted);
 
-    if (!modlog) return modmin.send('I cannot find a modlog channel.');
+    if (!stevemodlog) return modmin.send('I cannot find a stevemodlog channel.');
     const embed = new RichEmbed()
     .setTitle('Unmute | ' + `${user.username}#${user.discriminator}`)
     .setAuthor(`${modmin.username}#${modmin.discriminator}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0x13c4be)
     .setTimestamp();
-    modlog.send({embed});
+    stevemodlog.send({embed});
   }
 };

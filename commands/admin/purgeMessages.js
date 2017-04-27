@@ -25,14 +25,14 @@ module.exports = class PurgeMessagesCommand extends Command {
 
   run(msg, args) {
     var msgCount = args.num + 1;
-    var modlog = msg.guild.channels.find('name', 'modlog');
+    var stevemodlog = msg.guild.channels.find('name', 'stevemodlog');
     var admin = msg.author;
 
     msg.channel.fetchMessages({
       limit: msgCount
     }).then(messages => msg.channel.bulkDelete(messages));
 
-    if (!modlog) return console.log('No modlog.');
+    if (!stevemodlog) return console.log('No stevemodlog.');
     const embed = new RichEmbed()
     .setTitle('Message Purge')
     .setAuthor(`${admin.username}#${admin.discriminator}`, `${admin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${admin.username.toLowerCase()}`)
@@ -40,6 +40,6 @@ module.exports = class PurgeMessagesCommand extends Command {
     .addField('Channel: ', msg.channel.name, true)
     .addField('Number of Messages: ', msgCount - 1, true)
     .setTimestamp();
-    modlog.send({embed});
+    stevemodlog.send({embed});
   }
 };

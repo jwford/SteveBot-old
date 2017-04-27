@@ -35,7 +35,7 @@ module.exports = class MuteCommand extends Command {
     var modmin = msg.author;
     var reason = args.reason;
     var muted = msg.guild.roles.find('name', 'Muted');
-    var modlog = msg.guild.channels.find('name', 'modlog');
+    var stevemodlog = msg.guild.channels.find('name', 'stevemodlog');
 
     if (user.id === this.client.user.id) return modmin.send('Why would you want to mute me?');
     if (user.id === modmin.id) return modmin.send('No muting yourself :stuck_out_tongue:');
@@ -44,13 +44,13 @@ module.exports = class MuteCommand extends Command {
 
     msg.guild.member(user).addRole(muted);
 
-    if (!modlog) return modmin.send('I cannot find a modlog channel.');
+    if (!stevemodlog) return modmin.send('I cannot find a stevemodlog channel.');
     const embed = new RichEmbed()
     .setTitle('Mute | ' + `${user.username}#${user.discriminator}`)
     .setAuthor(`${modmin.username}#${modmin.discriminator}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0x13c4be)
     .setTimestamp()
     .addField('Reason:', reason, true);
-    modlog.send({embed});
+    stevemodlog.send({embed});
   }
 };

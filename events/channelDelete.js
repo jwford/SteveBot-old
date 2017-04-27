@@ -1,13 +1,13 @@
 const RichEmbed = require('discord.js').RichEmbed;
 
 module.exports = channel => {
-  var actionlog = channel.guild.channels.find('name', 'actionlog');
+  var steveactionlog = channel.guild.channels.find('name', 'steveactionlog');
 
-  if (!actionlog) return console.log('No actionlog channel.');
+  if (!steveactionlog) return console.log('No steveactionlog channel.');
   const embed = new RichEmbed()
   .setTitle('Channel Deleted | ' + `#${channel.name}`)
   .setColor(0x6518bc)
   .setTimestamp()
   .setFooter('ID: ' + `${channel.id}`);
-  actionlog.send({embed});
+  steveactionlog.send({embed});
 };

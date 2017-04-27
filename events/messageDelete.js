@@ -2,8 +2,8 @@ const RichEmbed = require('discord.js').RichEmbed;
 const moment = require('moment');
 
 module.exports = msg => {
-  var actionlog = msg.guild.channels.find('name', 'actionlog');
-  if (!actionlog) return console.log('No actionlog channel.');
+  var steveactionlog = msg.guild.channels.find('name', 'steveactionlog');
+  if (!steveactionlog) return console.log('No steveactionlog channel.');
   var sentTime = moment(msg.createdAt).format('ddd M-D-YY [at] h:mmA [GMT]ZZ');
   const embed = new RichEmbed()
   .setTitle('Message Deleted')
@@ -12,5 +12,5 @@ module.exports = msg => {
   .setTimestamp()
   .addField('Content:',  msg.content)
   .addField('Message Sent on:', sentTime);
-  actionlog.send({embed});
+  steveactionlog.send({embed});
 };

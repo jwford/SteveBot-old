@@ -34,20 +34,20 @@ module.exports = class WarnCommand extends Command {
     var user = args.user;
     var modmin = msg.author;
     var reason = args.reason;
-    var modlog = msg.guild.channels.find('name', 'modlog');
+    var stevemodlog = msg.guild.channels.find('name', 'stevemodlog');
 
     if (user.id === this.client.user.id) return modmin.send('Using this command on me will break me. What did I ever do to you, anyway?');
     if (user.id === modmin.id) return modmin.send('Why would you want to warn yourself?');
 
     user.send(user + ' please turn the bus around in ' + msg.channel + '. ' + reason + ' :bus:');
 
-    if(!modlog) return modmin.send('I cannot find a modlog channel.');
+    if(!stevemodlog) return modmin.send('I cannot find a stevemodlog channel.');
     const embed = new RichEmbed()
     .setTitle('Warning | ' + `${user.username}#${user.discriminator}`)
     .setAuthor(`${modmin.username}#${modmin.discriminator}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0x2463C9)
     .setTimestamp()
     .addField('Reason:', reason, true);
-    modlog.send({embed});
+    stevemodlog.send({embed});
   }
 };

@@ -35,7 +35,7 @@ module.exports = class KickCommand extends Command {
     var user = args.user;
     var modmin = msg.author;
     var reason = args.reason;
-    var modlog = msg.guild.channels.find('name', 'modlog');
+    var stevemodlog = msg.guild.channels.find('name', 'stevemodlog');
 
     if (!msg.guild.member(user).kickable) return modmin.send('This user is not kickable.');
     if (user.id === modmin.id) return modmin.send('Silly, you can\'t kick yourself!');
@@ -43,13 +43,13 @@ module.exports = class KickCommand extends Command {
     msg.guild.member(user).kick();
     user.send('You have been kicked from ' + msg.guild.name + '. Message an admin if you have a question.');
 
-    if(!modlog) return modmin.send('I cannot find a modlog channel.');
+    if(!stevemodlog) return modmin.send('I cannot find a stevemodlog channel.');
     const embed = new RichEmbed()
     .setTitle('Kicked | ' + `${user.username}#${user.discriminator}`)
     .setAuthor(`${modmin.username}#${modmin.discriminator}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0xe81ee1)
     .setTimestamp()
     .addField('Reason:', reason, true);
-    modlog.send({embed});
+    stevemodlog.send({embed});
   }
 };

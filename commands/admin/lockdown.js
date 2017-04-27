@@ -20,7 +20,7 @@ module.exports = class LockdownCommand extends Command {
   run(msg) {
     var guild = msg.guild.id;
     var admin = msg.author;
-    var modlog = msg.guild.channels.find('name', 'modlog');
+    var stevemodlog = msg.guild.channels.find('name', 'stevemodlog');
 
     msg.channel.overwritePermissions(guild, {
       SEND_MESSAGES: false
@@ -28,13 +28,13 @@ module.exports = class LockdownCommand extends Command {
     .then(() => msg.channel.send('This channel has been locked down.'))
     .catch(console.error);
 
-    if (!modlog) return console.log('No modlog channel.');
+    if (!stevemodlog) return console.log('No stevemodlog channel.');
     const embed = new RichEmbed()
     .setTitle('Channel Locked | ' + `${msg.channel.name}`)
     .setAuthor(`${admin.username}#${admin.discriminator}`, `${admin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${admin.username.toLowerCase()}`)
     .setColor(0x6518bc)
     .setTimestamp()
     .setFooter('ID: ' + msg.channel.id);
-    modlog.send({embed});
+    stevemodlog.send({embed});
   }
 };
