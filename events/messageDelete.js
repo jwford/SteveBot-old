@@ -6,7 +6,7 @@ module.exports = msg => {
   if (!steveactionlog) return console.log('No steveactionlog channel.');
   var sentTime = moment(msg.createdAt).format('ddd M-D-YY [at] h:mmA [GMT]ZZ');
   const embed = new RichEmbed()
-  .setTitle('Message Deleted')
+  .setTitle(`Message Deleted in ${msg.channel.name}`)
   .setAuthor(`${msg.author.username}#${msg.author.discriminator}`, `${msg.author.displayAvatarURL}`)
   .setColor(0xd14927)
   .setTimestamp()

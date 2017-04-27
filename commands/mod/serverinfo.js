@@ -17,8 +17,8 @@ module.exports = class ServerInfoCommand extends Command {
   }
 
   run(msg) {
-    var roles = msg.guild.roles.map(r => r.name).join(', ');
-    roles = roles.slice(1);
+    var roles = msg.guild.roles.map(r => r.name).sort().join(', ');
+    roles = roles.replace(/@/g, '');
 
     var createdTime = moment(msg.guild.createdAt).format('ddd M-D-YY [at] h:mmA [GMT]ZZ');
 
@@ -52,6 +52,8 @@ module.exports = class ServerInfoCommand extends Command {
     .addField('Bots:', msg.guild.members.filter(u => u.user.bot === true).size, true)
     .addField('Online:', msg.guild.members.filter(u => u.user.presence.status === 'online').size, true)
     .addField('Offline:', msg.guild.members.filter(u => u.user.presence.status === 'offline').size, true)
+    .addField('Idle:', msg.guild.members.filter(u => u.user.presence.status === 'idle').size, true)
+    .addField('Do Not Disturb:', msg.guild.members.filter(u => u.user.presence.status === 'dnd').size, true)
     .addField('Channels:', msg.guild.channels.size, true)
     .addField('Region:', msg.guild.region, true)
     .addField('Number of Roles:', msg.guild.roles.size, true)
@@ -59,6 +61,7 @@ module.exports = class ServerInfoCommand extends Command {
     .addField('Default Channel:', msg.guild.defaultChannel.name, true)
     .addField('Accessible:', msg.guild.available, true)
     .addField('Verification Level:', verificationLevel, true)
+    .addField('Explicit Content Filter:', msg.guild.explicitContentFilter, true)
     .addField('Roles:', roles)
     .addField('Created On:', createdTime, true);
     msg.channel.send({embed});

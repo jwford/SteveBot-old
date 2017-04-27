@@ -58,4 +58,16 @@ module.exports = (oldGuild, newGuild) => {
     if (newGuild.available === false) return console.log('Server not available.');
     if (newGuild.available === true) return console.log('Server available.');
   }
+
+  //explicit content filter
+  if (oldGuild.explicitContentFilter !== newGuild.explicitContentFilter) {
+    const embed = new RichEmbed()
+    .setTitle('Server Explicit Content Filter Changed')
+    .setColor(0x6128ff)
+    .addField('Old Filter: ', oldGuild.explicitContentFilter, true)
+    .addField('New Filter: ', newGuild.explicitContentFilter, true)
+    .setFooter(`ID: ${newGuild.id}`)
+    .setTimestamp();
+    steveactionlog.send({embed});
+  }
 };
