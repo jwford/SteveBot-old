@@ -12,8 +12,8 @@ stevebot.registry
     .registerGroups([
         ['mod', 'Moderator Commands'],
         ['admin', 'Administrator Commands'],
-        ['everyone', 'Commands for Everyone'],
-        ['music', 'Music Commands']
+        ['everyone', 'Commands for Everyone']
+        // ['music', 'Music Commands']
     ])
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'commands'));
