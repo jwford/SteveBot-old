@@ -35,6 +35,9 @@ module.exports = class ConvertCommand extends Command {
     var inputUnit = args.inputUnit;
     var outputUnit = args.outputUnit;
     var best = convert(num).from(inputUnit).toBest();
+    var allPossibles = convert().possibilities();
+
+    if (allPossibles.includes(inputUnit) === false || allPossibles.includes(outputUnit) === false) return msg.channel.send('One or both of your units is invalid. This command is case sensitive.');
 
     if (outputUnit === 'possible') {
       const embed = new RichEmbed()
