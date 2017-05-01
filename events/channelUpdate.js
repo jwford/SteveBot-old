@@ -28,7 +28,7 @@ module.exports = (oldChannel, newChannel) => {
 
   if (oldChannel.topic !== newChannel.topic) {
     const embed = new RichEmbed()
-    .setTitle('Channel Topic Changed')
+    .setTitle(`${newChannel.name} Topic Changed`)
     .setColor(0x6518bc)
     .addField('Old Topic: ', oldTopic)
     .addField('New Topic: ', newTopic)
@@ -40,7 +40,7 @@ module.exports = (oldChannel, newChannel) => {
   //position
   if (oldChannel.position !== newChannel.position) {
     const embed = new RichEmbed()
-    .setTitle('Channel Position Changed')
+    .setTitle(`${newChannel.name} Position Changed`)
     .setColor(0x6518bc)
     .addField('Old Position: ', oldChannel.position, true)
     .addField('New Position: ', newChannel.position, true)
