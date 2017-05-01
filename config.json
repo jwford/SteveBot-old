@@ -5,7 +5,7 @@
     "102561906765619200"
   ],
   "disableEveryone": true,
-  "commandPrefix": "!",
+  "commandPrefix": ";",
   "admin_role_name": "admin",
   "mod_role_name": "channel mod",
   "game": "he's in alpha"
