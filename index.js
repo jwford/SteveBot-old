@@ -14,7 +14,11 @@ stevebot.registry
         ['admin', 'Administrator Commands'],
         ['everyone', 'Commands for Everyone']
     ])
-    .registerDefaults()
+    .registerDefaultGroups()
+    .registerDefaultTypes()
+    .registerDefaultCommands({
+      help: false
+    })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 stevebot.login(config.token);
