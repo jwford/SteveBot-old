@@ -14,17 +14,37 @@ module.exports = class ConvertCommand extends Command {
           key: 'num',
           label: 'value',
           prompt: 'What would you like to convert?',
-          type: 'float',
+          type: 'float'
         },
         {
           key: 'inputUnit',
           prompt: 'What unit would you like to convert from?',
-          type: 'string'
+          type: 'string',
+          validate: inputUnit => {
+            var possible = convert().possibilities();
+            var valid = 0;
+            for (var i = 0; i < possible.length; i++) {
+              if (inputUnit === possible[i]) valid++;
+            }
+            if (valid !== 1) {
+              return false;
+            } else return true;
+          }
         },
         {
           key: 'outputUnit',
           prompt: 'What unit would you like to convert to? You can also say "possible" to get a list of possible units, or "best" to automatically convert to the smallest unit with a value greater than 1.',
           type: 'string',
+          validate: outputUnit => {
+            var possible = convert().possibilities();
+            var valid = 0;
+            for (var i = 0; i < possible.length; i++) {
+              if (outputUnit === possible[i]) valid++;
+            }
+            if (valid !== 1) {
+              return false;
+            } else return true;
+          }
         }
       ]
     });
@@ -35,6 +55,14 @@ module.exports = class ConvertCommand extends Command {
     var inputUnit = args.inputUnit;
     var outputUnit = args.outputUnit;
     var best = convert(num).from(inputUnit).toBest();
+
+    var outputPossibles = convert().from(inputUnit).possibilities();
+    var outputValid = 0;
+    for (var i = 0; i < outputPossibles.length; i++) {
+      if (outputUnit === outputPossibles[i]) outputValid++;
+    }
+
+    if (outputValid !== 1) return msg.reply('you can\'t make that conversion, silly. Try to do better next time.');
 
     if (outputUnit === 'possible') {
       const embed = new RichEmbed()
