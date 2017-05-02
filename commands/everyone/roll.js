@@ -20,7 +20,11 @@ module.exports = class DiceRollCommand extends Command {
 
   run(msg, args) {
     var sides = args.sides;
+
+    if (sides <= 0) return msg.reply('stop trying to be funny. I\'m not *that* dumb, ya know.');
+
     var roll = Math.floor(Math.random() * sides) + 1;
+
     const embed = new RichEmbed()
     .setColor(0x2913ef)
     .setTitle(`${msg.member.displayName}, you rolled a ${roll} :game_die:`);
