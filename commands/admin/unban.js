@@ -50,8 +50,8 @@ module.exports = class UnbanCommand extends Command {
 
     if (!stevemodlog) return modmin.send('I can\'t find a stevemodlog channel');
     const embed = new RichEmbed()
-    .setTitle('Unbanned | ' + `${user.username}#${user.discriminator}`)
-    .setAuthor(`${modmin.username}#${modmin.discriminator}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
+    .setTitle('Unbanned | ' + `${user.tag}`)
+    .setAuthor(`${modmin.tag}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0xf91f1b)
     .setTimestamp()
     .addField('Reason:', reason, true);

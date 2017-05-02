@@ -7,7 +7,7 @@ module.exports = msg => {
   var sentTime = moment(msg.createdAt).format('ddd M-D-YY [at] h:mmA [GMT]ZZ');
   const embed = new RichEmbed()
   .setTitle(`Message Deleted in ${msg.channel.name}`)
-  .setAuthor(`${msg.author.username}#${msg.author.discriminator}`, `${msg.author.displayAvatarURL}`)
+  .setAuthor(`${msg.author.tag}`, `${msg.author.displayAvatarURL}`)
   .setColor(0xd14927)
   .setTimestamp()
   .addField('Content:',  msg.content)

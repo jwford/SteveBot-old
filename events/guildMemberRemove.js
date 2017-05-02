@@ -7,7 +7,7 @@ module.exports = member => {
   if (!steveactionlog) return console.log('No steveactionlog channel.');
   const embed = new RichEmbed()
   .setTitle('Member Left')
-  .setAuthor(`${user.username}#${user.discriminator}`, `${user.displayAvatarURL}`)
+  .setAuthor(`${user.tag}`, `${user.displayAvatarURL}`)
   .setColor(0x26d1a9)
   .setTimestamp()
   .setFooter('ID: ' + `${user.id}`);

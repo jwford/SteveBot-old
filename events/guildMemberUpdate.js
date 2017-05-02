@@ -11,7 +11,7 @@ module.exports = (oldMember, newMember) => {
     const embed = new RichEmbed()
     .setTitle('User Nickname Changed')
     .setColor(0x00f400)
-    .addField('User: ', `${user.username}#${user.discriminator}`, true)
+    .addField('User: ', `${user.tag}`, true)
     .addField('Old Display Name: ', oldMember.displayName)
     .addField('New Display Name: ', newMember.displayName)
     .setFooter('ID: ' + user.id);

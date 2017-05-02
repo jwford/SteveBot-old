@@ -40,14 +40,14 @@ module.exports = class MuteCommand extends Command {
     if (user.id === this.client.user.id) return modmin.send('Why would you want to mute me?');
     if (user.id === modmin.id) return modmin.send('No muting yourself :stuck_out_tongue:');
     if (!muted) return modmin.send(msg.guild.name + ' does not have a Muted role.');
-    if (msg.guild.member(user).roles.get(muted.id)) return modmin.send(`${user.username}#${user.discriminator} is already muted.`);
+    if (msg.guild.member(user).roles.get(muted.id)) return modmin.send(`${user.tag} is already muted.`);
 
     msg.guild.member(user).addRole(muted);
 
     if (!stevemodlog) return modmin.send('I cannot find a stevemodlog channel.');
     const embed = new RichEmbed()
-    .setTitle('Mute | ' + `${user.username}#${user.discriminator}`)
-    .setAuthor(`${modmin.username}#${modmin.discriminator}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
+    .setTitle('Mute | ' + `${user.tag}`)
+    .setAuthor(`${modmin.tag}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0x13c4be)
     .setTimestamp()
     .addField('Reason:', reason, true);

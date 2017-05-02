@@ -45,8 +45,8 @@ module.exports = class KickCommand extends Command {
 
     if(!stevemodlog) return modmin.send('I cannot find a stevemodlog channel.');
     const embed = new RichEmbed()
-    .setTitle('Kicked | ' + `${user.username}#${user.discriminator}`)
-    .setAuthor(`${modmin.username}#${modmin.discriminator}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
+    .setTitle('Kicked | ' + `${user.tag}`)
+    .setAuthor(`${modmin.tag}`, `${modmin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${modmin.username.toLowerCase()}`)
     .setColor(0xe81ee1)
     .setTimestamp()
     .addField('Reason:', reason, true);

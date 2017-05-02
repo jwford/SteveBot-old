@@ -31,7 +31,7 @@ module.exports = class LockdownCommand extends Command {
     if (!stevemodlog) return console.log('No stevemodlog channel.');
     const embed = new RichEmbed()
     .setTitle('Channel Locked | ' + `${msg.channel.name}`)
-    .setAuthor(`${admin.username}#${admin.discriminator}`, `${admin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${admin.username.toLowerCase()}`)
+    .setAuthor(`${admin.tag}`, `${admin.displayAvatarURL}`, `http://www.tuataria.com/tuataria/bios/#${admin.username.toLowerCase()}`)
     .setColor(0x6518bc)
     .setTimestamp()
     .setFooter('ID: ' + msg.channel.id);
