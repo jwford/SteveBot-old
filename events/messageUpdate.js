@@ -29,7 +29,7 @@ module.exports = (oldMsg, newMsg) => {
   if (newMsg.content.includes('@everyone') || newMsg.content.includes('@here')) {
     if (!newMsg.member.hasPermission('MANAGE_ROLES')) {
       newMsg.delete();
-      newMsg.reply('I\'m trying to eat eucalyptus in peace, so please stop mentioning everyone.');
+      newMsg.reply('I\'m trying to eat eucalyptus in peace, so please stop mentioning everyone/here.');
     }
   }
 

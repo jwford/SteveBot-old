@@ -106,7 +106,6 @@ module.exports = class TimezoneCommand extends Command {
       hourDifference = -Math.abs(firstZoneHour - secondZoneHour);
       newMinutes -= firstZoneMinutes;
     }
-    console.log(hourDifference);
 
     newHours = hourDifference + inputHours;
 
