@@ -43,6 +43,7 @@ module.exports = class MuteCommand extends Command {
     if (msg.guild.member(user).roles.get(muted.id)) return modmin.send(`${user.tag} is already muted.`);
 
     msg.guild.member(user).addRole(muted);
+    user.send(`You have been muted in ${msg.guild.name}.` + reason);
 
     if (!stevemodlog) return modmin.send('I cannot find a stevemodlog channel.');
     const embed = new RichEmbed()

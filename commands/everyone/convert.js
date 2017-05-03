@@ -64,6 +64,14 @@ module.exports = class ConvertCommand extends Command {
 
     if (outputValid !== 1) return msg.reply('you can\'t make that conversion, silly. Try to do better next time.');
 
+    if (inputUnit === 'F' && outputUnit === 'K') {
+      const embed = new RichEmbed()
+      .setColor(0x4280f4)
+      .addField('Conversion: ', `${num}${inputUnit} converts to ${Math.round(((((num - 32) * 5 / 9) + 273.15) * 10) / 10).toFixed(1)}${outputUnit}`);
+      msg.channel.send({embed});
+      return;
+    }
+
     if (outputUnit === 'possible') {
       const embed = new RichEmbed()
       .setColor(0x4280f4)
