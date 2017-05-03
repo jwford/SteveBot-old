@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const ytdl = require("youtube-dl");
+const ytdl = require("ytdl-core");
 const JukeBox = require("./JukeBox.js")
 
 class PlayCommand extends commando.Command {
@@ -15,6 +15,7 @@ class PlayCommand extends commando.Command {
 
   run(message, args) {
       JukeBox.getPlayer().play();
+      message.channel.send("Getting into your ears...");
   }
 
 }

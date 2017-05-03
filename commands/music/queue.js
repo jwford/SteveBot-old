@@ -3,7 +3,7 @@ const commando = require('discord.js-commando');
 
 const JukeBox = require("./JukeBox.js");
 
-const ytdl = require("youtube-dl");
+const ytdl = require("ytdl-core");
 
 class QueueCommand extends commando.Command {
 
@@ -20,10 +20,20 @@ class QueueCommand extends commando.Command {
 
     var songList = JukeBox.getPlayer().getQueue().getQueue();
     var titleList = new Array();
+    var positionList = new Array();
     if (songList.length > 0) {
       var titles = JukeBox.getPlayer().getQueue().getTitles();
       for (var i = 0; i < songList.length; i++) {
-        titleList.push('[' + titles[i] + ']' + '(' + songList[i] + ')');
+        var position = i + 1;
+        //positionList.push(position);
+        if (position != 1) {
+          titleList.push('[' + position + '.' + '\t' + titles[i] + ']' + '(' + songList[i] + ')');
+        } else {
+          titleList.push('[' + position + '. ' + '\t' + titles[i] + ']' + '(' + songList[i] + ')');
+        }
+        //titleList.push('[' + position + '.' + '\t' + titles[i] + ']' + '(' + songList[i] + ')');
+        //titleList.push('[' + titles[i] + ']' + '(' + songList[i] + ')');
+
       }
     } else {
       titleList = "The queue is currently empty!";
@@ -32,7 +42,9 @@ class QueueCommand extends commando.Command {
     let channel = message.channel;
 
     let embed = new discord.RichEmbed()
+    //.setTitle('Currently queued:')
     .setColor(0x4b42f4)
+  //  .addField('Position', positionList, false)
     .addField('Currently queued:', titleList, true);
     channel.send({embed});
 

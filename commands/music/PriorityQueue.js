@@ -1,4 +1,4 @@
-const ytdl = require("youtube-dl");
+const ytdl = require("ytdl-core");
 
 class PriorityQueue {
 
@@ -19,8 +19,11 @@ class PriorityQueue {
       });
   }
 
-  remove(song) {
-
+  //make sure this isn't <0 -> handle that case before?
+  remove(position) {
+      if (position < 0) return;
+      this.getQueue().splice(position-1, 1);
+      this.getTitles().splice(position-1, 1);
   }
 
   empty() {

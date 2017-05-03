@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 
-const ytdl = require("youtube-dl");
+const ytdl = require("ytdl-core");
 
 const JukeBox = require("./JukeBox.js");
 

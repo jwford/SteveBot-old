@@ -1,5 +1,5 @@
 const Queue = require("./PriorityQueue.js");
-const ytdl = require("youtube-dl");
+const ytdl = require("ytdl-core");
 
 const musicTextChannel = 'music';
 
@@ -46,9 +46,8 @@ class MusicPlayer {
     this.getQueue().add(song);
   }
 
-  removeSong(pos) {
-    this.getQueue().getQueue().splice(pos, 1);
-    this.getQueue().getTitles().splice(pos, 1);
+  removeSong(position) {
+    this.getQueue().remove(position);
     console.log("Removed a song");
   }
 
@@ -114,7 +113,7 @@ class MusicPlayer {
       this.setMusicChannelTopic('🎵');
       var queueLength = this.getQueue().getQueue().length;
       if (queueLength > 0) {
-        this.removeSong(0);
+        this.removeSong(1);
         if (queueLength > 1) {
           this.play();
           this.setMusicChannelTopic("Playing " + this.getQueue().getCurrentSongTitle());
