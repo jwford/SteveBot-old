@@ -10,6 +10,6 @@ module.exports = member => {
   .setAuthor(`${user.tag}`, `${user.displayAvatarURL}`)
   .setColor(0x26d1a9)
   .setTimestamp()
-  .setFooter('ID: ' + `${user.id}`);
+  .setFooter(`ID: ${user.id}`);
   steveactionlog.send({embed});
 };

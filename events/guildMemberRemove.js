@@ -8,8 +8,8 @@ module.exports = member => {
   const embed = new RichEmbed()
   .setTitle('Member Left')
   .setAuthor(`${user.tag}`, `${user.displayAvatarURL}`)
-  .setColor(0x26d1a9)
+  .setColor(0x17b7d3)
   .setTimestamp()
-  .setFooter('ID: ' + `${user.id}`);
+  .setFooter(`ID: ${user.id}`);
   steveactionlog.send({embed});
 };

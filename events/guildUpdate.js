@@ -55,8 +55,8 @@ module.exports = (oldGuild, newGuild) => {
 
   //available
   if (oldGuild.available !== newGuild.available) {
-    if (newGuild.available === false) return console.log('Server not available.');
-    if (newGuild.available === true) return console.log('Server available.');
+    if (newGuild.available === false) return console.log(`${newGuild.name} not available.`);
+    if (newGuild.available === true) return console.log(`${newGuild.name} not available.`);
   }
 
   //explicit content filter

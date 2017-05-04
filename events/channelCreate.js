@@ -5,9 +5,9 @@ module.exports = channel => {
 
   if (!steveactionlog) return console.log('No steveactionlog channel.');
   const embed = new RichEmbed()
-  .setTitle('Channel Created | ' + `#${channel.name}`)
+  .setTitle(`Channel Created | ${channel.name}`)
   .setColor(0x6518bc)
   .setTimestamp()
-  .setFooter('ID: ' + `${channel.id}`);
+  .setFooter(`ID: ${channel.id}`);
   steveactionlog.send({embed});
 };
