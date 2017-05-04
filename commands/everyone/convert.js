@@ -36,6 +36,7 @@ module.exports = class ConvertCommand extends Command {
           prompt: 'What unit would you like to convert to? You can also say "possible" to get a list of possible units, or "best" to automatically convert to the smallest unit with a value greater than 1.',
           type: 'string',
           validate: outputUnit => {
+            if (outputUnit === 'best' || outputUnit === 'possible') return true;
             var possible = convert().possibilities();
             var valid = 0;
             for (var i = 0; i < possible.length; i++) {
@@ -60,9 +61,17 @@ module.exports = class ConvertCommand extends Command {
     var outputValid = 0;
     for (var i = 0; i < outputPossibles.length; i++) {
       if (outputUnit === outputPossibles[i]) outputValid++;
+      if (outputUnit === 'best' || outputUnit === 'possible') {
+        outputValid = 1;
+      }
     }
 
     if (outputValid !== 1) return msg.reply('you can\'t make that conversion, silly. Try to do better next time.');
+
+    if (inputUnit === 'K' && num < 0) return msg.reply('Kelvin can\'t be negative. Come on now, at least try.');
+
+    if (inputUnit === 'C' && num < -273.15) return msg.reply('that\'s below absolute zero. Nice try though.');
+    if (inputUnit === 'F' && num < -459.67) return msg.reply('that\'s below absolute zero. Nice try though.');
 
     if (inputUnit === 'F' && outputUnit === 'K') {
       const embed = new RichEmbed()
