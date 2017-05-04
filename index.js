@@ -12,7 +12,8 @@ stevebot.registry
     .registerGroups([
         ['mod', 'Moderator Commands'],
         ['admin', 'Administrator Commands'],
-        ['everyone', 'Commands for Everyone']
+        ['everyone', 'Commands for Everyone'],
+        ['owners', 'Bot Owner Commands']
     ])
     .registerDefaultGroups()
     .registerDefaultTypes()
