@@ -36,16 +36,4 @@ module.exports = (oldChannel, newChannel) => {
     .setTimestamp();
     steveactionlog.send({embed});
   }
-
-  //position
-  if (oldChannel.position !== newChannel.position) {
-    const embed = new RichEmbed()
-    .setTitle(`${newChannel.name} Position Changed`)
-    .setColor(0x6518bc)
-    .addField('Old Position: ', oldChannel.position, true)
-    .addField('New Position: ', newChannel.position, true)
-    .setFooter(`ID: ${newChannel.id}`)
-    .setTimestamp();
-    steveactionlog.send({embed});
-  }
 };
