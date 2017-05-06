@@ -43,7 +43,7 @@ module.exports = msg => {
       if (msg.guild.emojis.find('name', data.reacts[react])) {
         msg.react(msg.guild.emojis.find('name', data.reacts[react]));
       } else {
-        console.log('That emoji doesn\'t exist.');
+        console.log(`${data.reacts[react]} doesn\'t exist in ${msg.guild.name}.`);
       }
     }
   }
