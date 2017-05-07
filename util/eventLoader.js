@@ -9,6 +9,7 @@ module.exports = stevebot => {
   stevebot.on('emojiCreate', reqEvent('emojiCreate'));
   stevebot.on('emojiDelete', reqEvent('emojiDelete'));
   stevebot.on('error', reqEvent('error'));
+  stevebot.on('groupStatusChange', reqEvent('groupStatusChange'));
   stevebot.on('guildBanAdd', reqEvent('guildBanAdd'));
   stevebot.on('guildBanRemove', reqEvent('guildBanRemove'));
   stevebot.on('guildCreate', reqEvent('guildCreate'));
