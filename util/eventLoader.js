@@ -5,6 +5,7 @@ module.exports = stevebot => {
   stevebot.on('channelUpdate', reqEvent('channelUpdate'));
   stevebot.on('debug', reqEvent('debug'));
   stevebot.on('disconnect', reqEvent('disconnect'));
+  stevebot.on('error', reqEvent('error'));
   stevebot.on('guildBanAdd', reqEvent('guildBanAdd'));
   stevebot.on('guildBanRemove', reqEvent('guildBanRemove'));
   stevebot.on('guildCreate', reqEvent('guildCreate'));
