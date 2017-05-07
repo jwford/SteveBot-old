@@ -46,7 +46,7 @@ module.exports = class MarkdownCommand extends Command {
       msg.channel.send('\`__***underline bold italics***__\`');
       break;
     case '':
-      msg.channel.send('\`\`\`fix\n *italics* \n \n **bold** \n \n ***bold italics*** \n \n ~~strikeout~~ \n \n __underline__ \n \n __*underline italics*__ \n \n __**underline bold**__ \n \n __***underline bold italics***__ \n \n The code blocks are done with backticks. Single backtick on either side for a one line code block, three backticks for a multi-line code block.\`\`\`');
+      msg.channel.send('*italics* \n \n**bold** \n \n***bold italics***\n \n~~strikeout~~ \n \n__underline__ \n \n__*underline italics*__ \n \n__**underline bold**__ \n \n__***underline bold italics***__ \n \nThe code blocks are done with backticks. Single backtick on either side for a one line code block, three backticks for a multi-line code block.', {code: 'fix'});
       break;
     default:
       msg.reply('that\'s not a markdown thing. Stop making typos before the Jonathans notice.');
