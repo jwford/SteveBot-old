@@ -5,6 +5,7 @@ const stevebot = new commando.Client({
   owner: config.ownerID,
   commandPrefix: config.commandPrefix,
   disableEveryone: config.disableEveryone,
+  unknownCommandResponse: false
 });
 require('./util/eventLoader')(stevebot);
 
