@@ -3,6 +3,7 @@ module.exports = stevebot => {
   stevebot.on('channelCreate', reqEvent('channelCreate'));
   stevebot.on('channelDelete', reqEvent('channelDelete'));
   stevebot.on('channelUpdate', reqEvent('channelUpdate'));
+  stevebot.on('commandStatusChange', reqEvent('commandStatusChange'));
   stevebot.on('debug', reqEvent('debug'));
   stevebot.on('disconnect', reqEvent('disconnect'));
   stevebot.on('emojiCreate', reqEvent('emojiCreate'));
