@@ -1,3 +1,3 @@
 module.exports = info => {
-  console.log(`Debug info: \n${info}`);
+  console.log(info);
 };
