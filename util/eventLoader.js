@@ -25,5 +25,6 @@ module.exports = stevebot => {
   stevebot.on('roleCreate', reqEvent('roleCreate'));
   stevebot.on('roleDelete', reqEvent('roleDelete'));
   stevebot.on('roleUpdate', reqEvent('roleUpdate'));
+  stevebot.on('unknownCommand', reqEvent('unknownCommand'));
   stevebot.on('warn', reqEvent('warn'));
 };
