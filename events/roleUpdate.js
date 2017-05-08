@@ -7,6 +7,7 @@ module.exports = (oldRole, newRole) => {
   if (oldRole.name !== newRole.name) {
     const embed = new RichEmbed()
     .setTitle(`Role Name Changed | ${newRole.name}`)
+    .setColor(0x4e007f)
     .setFooter(`ID: ${newRole.id}`)
     .setTimestamp();
     steveactionlog.send({embed});
@@ -17,12 +18,14 @@ module.exports = (oldRole, newRole) => {
     if (newRole.hoist === true) {
       const embed = new RichEmbed()
       .setTitle(`${newRole.name} is now displayed separately in the members list.`)
+      .setColor(0x4e007f)
       .setFooter(`ID: ${newRole.id}`)
       .setTimestamp();
       steveactionlog.send({embed});
     } else {
       const embed = new RichEmbed()
       .setTitle(`${newRole.name} is now merged with the rest of the members list.`)
+      .setColor(0x4e007f)
       .setFooter(`ID: ${newRole.id}`)
       .setTimestamp();
       steveactionlog.send({embed});
@@ -32,7 +35,8 @@ module.exports = (oldRole, newRole) => {
   //color
   if (oldRole.hexColor !== newRole.hexColor) {
     const embed = new RichEmbed()
-    .setTitle(`${newRole.name}\'s new color is ${newRole.hexColr}.`)
+    .setTitle(`${newRole.name}\'s new color is ${newRole.hexColor}.`)
+    .setColor(0x4e007f)
     .setFooter(`ID: ${newRole.id}`)
     .setTimestamp();
     steveactionlog.send({embed});
