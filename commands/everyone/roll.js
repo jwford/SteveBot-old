@@ -19,7 +19,7 @@ module.exports = class DiceRollCommand extends Command {
   }
 
   run(msg, args) {
-    if (msg.guild.name === 'Tuatariglot') return msg.delete();
+    if (msg.guild.name === 'Tuatariglot' || msg.guild.name === 'Hogwartia') return msg.delete();
     var sides = args.sides;
 
     if (sides <= 0) return msg.reply('stop trying to be funny. I\'m not *that* dumb, ya know.');

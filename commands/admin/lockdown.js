@@ -14,7 +14,7 @@ module.exports = class LockdownCommand extends Command {
   }
 
   hasPermission(msg) {
-    return msg.member.roles.find('name', adminrole);
+    return msg.member.hasPermission('ADMINISTRATOR');
   }
 
   run(msg) {

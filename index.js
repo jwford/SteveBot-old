@@ -14,7 +14,8 @@ stevebot.registry
         ['mod', 'Moderator Commands'],
         ['admin', 'Administrator Commands'],
         ['everyone', 'Commands for Everyone'],
-        ['owners', 'Bot Owner Commands']
+        ['owners', 'Bot Owner Commands'],
+        ['hogwartia', 'Hogwartia Commands']
     ])
     .registerDefaultGroups()
     .registerDefaultTypes()

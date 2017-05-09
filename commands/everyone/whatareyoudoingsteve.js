@@ -12,7 +12,7 @@ module.exports = class WhatAreYouDoingCommand extends Command {
   }
 
   run(msg) {
-    if (msg.guild.name === 'Tuatariglot') return msg.delete();
+    if (msg.guild.name === 'Tuatariglot' || msg.guild.name === 'Hogwartia') return msg.delete();
     var answers = [
       'Munching on eucalyptus!',
       'Wishing I had Enchilada\'s dogs.',
