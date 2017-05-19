@@ -1,7 +1,6 @@
 const commando = require('discord.js-commando');
-
-const ytdl = require("ytdl-core");
-
+const ytdl = require(require("../../config.json").downloader);
+const musicRole = require('../../config.json').musicRole;
 const JukeBox = require("./JukeBox.js");
 
 class PlaylistCommand extends commando.Command {
@@ -13,6 +12,10 @@ class PlaylistCommand extends commando.Command {
       memberName: 'playlist',
       description: 'Adds a playlist to the queue.'
     });
+  }
+
+  hasPermission(msg) {
+    return msg.member.roles.find('name', musicRole);
   }
 
   run(message, args) {

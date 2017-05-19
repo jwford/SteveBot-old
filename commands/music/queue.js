@@ -3,7 +3,7 @@ const commando = require('discord.js-commando');
 
 const JukeBox = require("./JukeBox.js");
 
-const ytdl = require("ytdl-core");
+const ytdl = require(require("../../config.json").downloader);
 
 class QueueCommand extends commando.Command {
 
@@ -22,14 +22,15 @@ class QueueCommand extends commando.Command {
     var titleList = new Array();
     var positionList = new Array();
     if (songList.length > 0) {
-      var titles = JukeBox.getPlayer().getQueue().getTitles();
+      //var titles = JukeBox.getPlayer().getQueue().getTitles();
       for (var i = 0; i < songList.length; i++) {
+        var currSong = songList[i];
         var position = i + 1;
         //positionList.push(position);
         if (position != 1) {
-          titleList.push('[' + position + '.' + '\t' + titles[i] + ']' + '(' + songList[i] + ')');
+          titleList.push('[' + position + '.' + '\t' + currSong.getTitle() + ']' + '(' + currSong.url + ')' + ' - ' + ' [' + currSong.getDuration() + ']' + ' - ' + currSong.getUser());
         } else {
-          titleList.push('[' + position + '. ' + '\t' + titles[i] + ']' + '(' + songList[i] + ')');
+          titleList.push('[' + position + '. ' + '\t' + currSong.getTitle() + ']' + '(' + currSong.url + ')' + ' - ' + ' [' + currSong.getDuration() + ']' + ' - ' + currSong.getUser());
         }
         //titleList.push('[' + position + '.' + '\t' + titles[i] + ']' + '(' + songList[i] + ')');
         //titleList.push('[' + titles[i] + ']' + '(' + songList[i] + ')');
@@ -45,6 +46,7 @@ class QueueCommand extends commando.Command {
     //.setTitle('Currently queued:')
     .setColor(0x4b42f4)
   //  .addField('Position', positionList, false)
+
     .addField('Currently queued:', titleList, true);
     channel.send({embed});
 

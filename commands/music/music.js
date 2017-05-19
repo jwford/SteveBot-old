@@ -1,6 +1,6 @@
 const commando = require('discord.js-commando');
 const JukeBox = require("./JukeBox.js");
-
+const musicRole = require('../../config.json').musicRole;
 const musicChannel = '🎵 music';
 
 class MusicCommand extends commando.Command {
@@ -12,6 +12,10 @@ class MusicCommand extends commando.Command {
       memberName: 'music',
       description: 'Starts up a music session.'
     });
+  }
+
+  hasPermission(msg) {
+    return msg.member.roles.find('name', musicRole);
   }
 
   run(message, args) {

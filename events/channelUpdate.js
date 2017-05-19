@@ -34,7 +34,7 @@ module.exports = (oldChannel, newChannel) => {
     .addField('New Topic: ', newTopic)
     .setFooter(`ID: ${newChannel.id}`)
     .setTimestamp();
-    actionlog.send({embed});
+    //actionlog.send({embed});
   }
 
   //position

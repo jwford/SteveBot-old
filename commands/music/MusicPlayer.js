@@ -1,5 +1,6 @@
+const discord = require('discord.js');
 const Queue = require("./PriorityQueue.js");
-const ytdl = require("ytdl-core");
+const ytdl = require(require("../../config.json").downloader);
 
 const musicTextChannel = 'music';
 
@@ -8,6 +9,8 @@ class MusicPlayer {
   constructor(voiceChannel) {
     this.queue = new Queue();
     this.voiceChannel = voiceChannel;
+    this.playing = false;
+    this.skipVotes = new Set();
   }
 
   getQueue() {
@@ -42,8 +45,26 @@ class MusicPlayer {
     return this.voiceChannel;
   }
 
-  addSong(song) {
-    this.getQueue().add(song);
+  async addSong(song, user) {
+    //var newSong = this.getQueue().getQueue()[-1];
+
+    var newSong = this.getQueue().add(song, user);
+    var that = this;
+    newSong.then( function(newSong) {
+      var songTitle = '[' + newSong.getTitle() + ']' + '(' + newSong.getUrl() + ')';
+
+      let channel = user.lastMessage.channel;
+
+      let requests = that.getQueue().getUsers().get(user);
+      let songString = ' song';
+      if (requests > 1) songString = songString + 's';
+
+      let embed = new discord.RichEmbed()
+      .setColor(0x4b42f4)
+      .addField("Song added:" , songTitle + ' [' + newSong.getDuration() + ']', false)
+      .addField("Requested by:", user + " [" + "requested " + requests + songString + " out of " + that.getQueue().getQueue().length + " in the current queue" + "]", false);
+      channel.send({embed});
+    });
   }
 
   removeSong(position) {
@@ -62,9 +83,7 @@ class MusicPlayer {
 
     this.getVoiceChannel().connection.playStream(stream);
 
-    stream.on('next', this.addPlaylist);
-
-
+    stream.on('next', this.addPlaylist());
 
   /*  stream.on('next', () => {
       that.getVoiceChannel().connection.playStream(stream);
@@ -73,8 +92,25 @@ class MusicPlayer {
 
   }
 
+  search(song, user) {
+    var search = 'gvsearch1:' + song;
+    var that = this;
+    ytdl.getInfo(search, function(err, info) {
+      if (err) console.log(err);
+      if (info == undefined) {
+        user.lastMessage.reply('welp, that didn\'t work. Try another query.');
+        return;
+      }
+      let link = 'https://www.youtube.com/watch?v=' + info.id;
+      that.addSong(link, user);
+    });
+  }
+
   async play() {
-    var stream = ytdl(this.getQueue().getCurrentSong());
+    this.playing = true;
+    var args = ["-f bestaudio"];
+    var stream = ytdl(this.getQueue().getCurrentSongURL(), args);
+    //console.log(stream);
     try {
       var dispatcher = this.getVoiceChannel().connection.playStream(stream);
     } catch(e) {
@@ -89,6 +125,7 @@ class MusicPlayer {
 
     stream.on('info', function(info) {
       size = info.size;
+      console.log(size);
       duration = info.duration;
     });
 
@@ -103,7 +140,8 @@ class MusicPlayer {
         var percent = Math.floor(pos/size * 100);
         if (percent != currentPercent) {
           currentPercent = percent;
-          that.setMusicChannelTopic("Playing " + that.getQueue().getCurrentSongTitle() + ' | '+ percent + '%' + ' of ' + duration);
+          if(that.isPlaying())
+            that.setMusicChannelTopic("Playing " + that.getQueue().getCurrentSongTitle() + ' | '+ percent + '%' + ' of ' + duration);
         }
         //console.log(percent + '%' + ' | ' + duration);
       }
@@ -111,9 +149,11 @@ class MusicPlayer {
 
     dispatcher.once('end', () => {
       this.setMusicChannelTopic('🎵');
+      this.skipVotes.clear();
       var queueLength = this.getQueue().getQueue().length;
       if (queueLength > 0) {
         this.removeSong(1);
+        this.playing = false;
         if (queueLength > 1) {
           this.play();
           this.setMusicChannelTopic("Playing " + this.getQueue().getCurrentSongTitle());
@@ -122,10 +162,23 @@ class MusicPlayer {
     });
   }
 
+  isPlaying() {
+    return this.playing;
+  }
+
   skip() {
     var skippedSong = this.getQueue().getCurrentSongTitle();
     this.getPlayerDispatcher().end();
     return skippedSong;
+  }
+
+  getSkipVotes() {
+    return this.skipVotes.size;
+  }
+
+  addSkipVote(user) {
+    //if (!this.skipVotes.has(user))
+    this.skipVotes.add(user);
   }
 
   stop() {
