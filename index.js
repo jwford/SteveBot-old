@@ -13,7 +13,8 @@ stevebot.registry
         ['mod', 'Moderator Commands'],
         ['admin', 'Administrator Commands'],
         ['everyone', 'Commands for Everyone'],
-        ['music', 'Music Commands']
+        ['music', 'Music Commands'],
+        ['playground', 'Playground Commands']
     ])
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'commands'));
