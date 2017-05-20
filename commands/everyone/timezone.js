@@ -1,6 +1,8 @@
 const { Command } = require('discord.js-commando');
 const RichEmbed = require('discord.js').RichEmbed;
 
+const moment = require('moment');
+
 module.exports = class TimezoneCommand extends Command {
   constructor(stevebot) {
     super(stevebot, {
@@ -33,14 +35,33 @@ module.exports = class TimezoneCommand extends Command {
   }
 
   run(msg, args) {
-    var inputTime = args.time;
+
+    var inputTime;
+    if (args.time.toUpperCase() == 'NOW') {
+      let authorTimezone = handleTimezone(msg.author.username, msg);
+      if (authorTimezone == null) {
+        msg.reply("you don't have a timezone, so we can't know what time it is for you now. Sorry! (ask a modmin for a timezone role)");
+        return;
+      }
+      let baseCurrentTime = moment().format("HH:mm");
+      let authorCurrentTime;
+      //TODO calculations to determine the authorCurrentTime based on baseCurrentTime and the author's timezone
+      inputTime = authorCurrentTime;
+    } else {
+      inputTime = args.time;
+    }
+
     inputTime = inputTime.split(':');
     var inputHours = inputTime[0];
     var inputMinutes = inputTime[1];
     var newHours;
     var newMinutes;
-    var firstZone = args.firstZone.toUpperCase();
-    var secondZone = args.secondZone.toUpperCase();
+
+    var firstZone = this.handleTimezone(args.firstZone, msg);
+    if (firstZone == null) return;
+    var secondZone = this.handleTimezone(args.secondZone, msg);
+    if (secondZone == null) return;
+
     var firstZoneHour = firstZone.slice(3, 6);
     var firstZoneMinutes = firstZone.slice(6);
     var secondZoneHour = secondZone.slice(3, 6);
@@ -83,10 +104,10 @@ module.exports = class TimezoneCommand extends Command {
     }
 
     if (firstZoneMinutes !== 0) {
-      if (firstZoneHour !== 5 && firstZoneHour !== 9) return msg.reply('you entered an invalid timzeone.');
+      if (firstZoneHour !== 5 && firstZoneHour !== 9) return msg.reply('you entered an invalid timezone.');
     }
     if (secondZoneMinutes !== 0) {
-      if (secondZoneHour !== 5 && secondZoneHour !== 9) return msg.reply('you entered an invalid timzeone.');
+      if (secondZoneHour !== 5 && secondZoneHour !== 9) return msg.reply('you entered an invalid timezone.');
     }
 
 
@@ -166,4 +187,36 @@ module.exports = class TimezoneCommand extends Command {
       msg.channel.send({embed});
     }
   }
+
+  handleTimezone(arg, msg) {
+    let timezone;
+
+    if (arg.toUpperCase() == 'ME') arg = msg.author.username;
+
+    if (arg.substr(0,3).toUpperCase() == 'GMT') {
+      timezone = arg.toUpperCase();
+    } else {
+      let userName = msg.guild.members.find('displayName', arg);
+      if (userName == null) {
+        msg.reply('couldn\'t find that username.');
+        return;
+      }
+      var userRoles = userName.roles;
+      let hasTimezone = false;
+      for (let [id, role] of userRoles) {
+        let roleName = role.name;
+        if (roleName.substr(0,3) === 'GMT') {
+          timezone = roleName;
+          hasTimezone = true;
+          break;
+        }
+      }
+      if (!hasTimezone) {
+        msg.reply('The first person doesn\'t have a timezone role.');
+        return;
+      }
+    }
+    return timezone;
+  }
+
 };
